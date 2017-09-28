@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.Robot;
 
-import com.qualcomm.hardware.motors.NeveRest20Gearmotor;
+import com.qualcomm.hardware.motors.NeveRest60Gearmotor;
 import com.qualcomm.robotcore.hardware.configuration.MotorConfigurationType;
 
 import org.firstinspires.ftc.teamcode.FTC_API.Robot.Robot;
@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.Robot.SubSystems.TwoWheelDrive;
 public class SimpleRobot extends Robot {
     public TwoWheelDrive drive = new TwoWheelDrive()
             .setMotorNames("Left_Motor", "Right_Motor")
-            .setMotorType(MotorConfigurationType.getMotorType(NeveRest20Gearmotor.class));
+            .setMotorType(MotorConfigurationType.getMotorType(NeveRest60Gearmotor.class));
 
     public SimpleRobot() {
         addSubSystem(drive);

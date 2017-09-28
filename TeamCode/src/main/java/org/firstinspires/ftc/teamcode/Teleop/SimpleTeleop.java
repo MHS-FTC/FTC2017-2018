@@ -12,10 +12,9 @@ import org.firstinspires.ftc.teamcode.Robot.SimpleRobot;
  * Simple teleop drive
  */
 
-@TeleOp(name = "SimpleTeleop")
+@TeleOp(name = "SimpleTeleop", group = "test")
 public class SimpleTeleop extends OpMode {
     private SimpleRobot robot = new SimpleRobot();
-//hi Ethan
     @Override
     public void init() {
         robot.init(hardwareMap);
