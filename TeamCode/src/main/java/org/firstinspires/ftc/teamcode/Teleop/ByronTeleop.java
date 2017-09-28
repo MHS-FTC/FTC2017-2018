@@ -32,7 +32,7 @@ public class ByronTeleop extends OpMode {
             robot.drive.drive(0, 0);
         }
 
-        if (gamepad2.a && robot.getTimeMilliseconds() > 9000) {
+        if (gamepad2.a && robot.getTimeMilliseconds() > 8000) {
             robot.drive.drive(1, 1);
         } else {
             robot.drive.drive(0, 0);
