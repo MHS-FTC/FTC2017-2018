@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Robot.SubSystems;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.configuration.MotorConfigurationType;
 
@@ -30,6 +31,9 @@ public class MecanumWheelDrive extends SubSystem {
         rightFrontMotor = hardwareDevices.dcMotor.get(options.get("rightFrontMotor"));
         leftBackMotor = hardwareDevices.dcMotor.get(options.get("leftBackMotor"));
         rightBackMotor = hardwareDevices.dcMotor.get(options.get("rightBackMotor"));
+
+        leftFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         return true;
     }
 
