@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.Robot.SubSystems;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -15,7 +14,7 @@ import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.SubSystem;
  * Simple TwoWheelDrive class that can be implemented and used
  */
 
-@Disabled
+
 public class MecanumWheelDrive extends SubSystem {
     private Options options = new Options(ID);
     protected DcMotor leftFrontMotor;
@@ -32,8 +31,8 @@ public class MecanumWheelDrive extends SubSystem {
         leftBackMotor = hardwareDevices.dcMotor.get(options.get("leftBackMotor"));
         rightBackMotor = hardwareDevices.dcMotor.get(options.get("rightBackMotor"));
 
-        leftFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        leftBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         return true;
     }
 
@@ -65,7 +64,7 @@ public class MecanumWheelDrive extends SubSystem {
     }
 
     /**
-     * NOTE: should dead zone joystick to insure we are not burning out motors
+     * TODO: should dead zone joystick to insure we are not burning out motors
      *
      * @param strafe  how much to strafe, from -1 to 1, 1 is full right. left x = strafe
      * @param forward how much to go forward and backwards, from -1 to 1, 1 is full forwards

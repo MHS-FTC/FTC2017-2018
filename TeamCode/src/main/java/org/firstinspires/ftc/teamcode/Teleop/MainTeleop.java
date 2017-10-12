@@ -12,8 +12,8 @@ import org.firstinspires.ftc.teamcode.Robot.Robot;
  * Simple teleop drive
  */
 
-@TeleOp(name = "MecanumTeleop", group = "test")
-public class MecanumTeleop extends OpMode {
+@TeleOp(name = "Teleop", group = "production")
+public class MainTeleop extends OpMode {
     private Robot robot = new Robot();
 
     @Override
@@ -26,6 +26,26 @@ public class MecanumTeleop extends OpMode {
     public void loop() {
         robot.tick();
 
+        //drive the robot
         robot.drive.drive(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
+
+
+        //control forklift
+        if (gamepad1.dpad_up) {
+            robot.forklift.raise(0.5);
+        } else if (gamepad1.dpad_down) {
+            robot.forklift.raise(-0.5);
+        } else {
+            robot.forklift.raise(0);
+        }
+
+
+        //control claws for forklift
+        if (gamepad1.a) {
+            robot.forklift.open();
+        }
+        if (gamepad1.b) {
+            robot.forklift.close();
+        }
     }
 }

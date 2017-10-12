@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.Robot;
 import com.qualcomm.hardware.motors.NeveRest60Gearmotor;
 import com.qualcomm.robotcore.hardware.configuration.MotorConfigurationType;
 
-import org.firstinspires.ftc.teamcode.FTC_API.Robot.Robot;
+import org.firstinspires.ftc.teamcode.FTC_API.Robot.RobotBase;
 import org.firstinspires.ftc.teamcode.Robot.SubSystems.TwoWheelDrive;
 
 /**
@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.Robot.SubSystems.TwoWheelDrive;
  * A simple robot that only includes two wheels
  */
 
-public class SimpleRobot extends Robot {
+public class SimpleRobot extends RobotBase {
     public TwoWheelDrive drive = new TwoWheelDrive()
             .setMotorNames("Left_Motor", "Right_Motor")
             .setMotorType(MotorConfigurationType.getMotorType(NeveRest60Gearmotor.class));

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robot;
 
-import org.firstinspires.ftc.teamcode.FTC_API.Robot.Robot;
+import org.firstinspires.ftc.teamcode.FTC_API.Robot.RobotBase;
+import org.firstinspires.ftc.teamcode.Robot.SubSystems.Forklift;
 import org.firstinspires.ftc.teamcode.Robot.SubSystems.MecanumWheelDrive;
 
 /**
@@ -9,11 +10,13 @@ import org.firstinspires.ftc.teamcode.Robot.SubSystems.MecanumWheelDrive;
  * A mecanum robot that includes four wheels
  */
 
-public class MecanumRobot extends Robot {
+public class Robot extends RobotBase {
     public MecanumWheelDrive drive = new MecanumWheelDrive()
             .setMotorNames("leftFront", "rightFront", "leftBack", "rightBack");
+    public Forklift forklift = new Forklift().setMotorNames("lift", "leftClaw", "rightClaw");
 
-    public MecanumRobot() {
+    public Robot() {
         addSubSystem(drive);
+        addSubSystem(forklift);
     }
 }

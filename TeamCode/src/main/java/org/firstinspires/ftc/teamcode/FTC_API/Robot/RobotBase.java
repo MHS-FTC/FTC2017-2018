@@ -16,7 +16,7 @@ import java.util.HashSet;
  * Main robot class that should be extended by all robot configurations
  */
 
-public class Robot {
+public class RobotBase {
 
     private HashMap<String, SubSystem> subSystems = new HashMap<>();
     private HashSet<String> needsTick = new HashSet<>();
