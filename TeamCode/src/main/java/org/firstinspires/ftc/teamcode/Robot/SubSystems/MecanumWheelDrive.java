@@ -31,8 +31,8 @@ public class MecanumWheelDrive extends SubSystem {
         leftBackMotor = hardwareDevices.dcMotor.get(options.get("leftBackMotor"));
         rightBackMotor = hardwareDevices.dcMotor.get(options.get("rightBackMotor"));
 
-        rightFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        rightBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         return true;
     }
 

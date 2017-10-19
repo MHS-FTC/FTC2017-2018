@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robot.SubSystems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -14,17 +15,18 @@ import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.SubSystem;
  */
 
 public class Forklift extends SubSystem {
-    public static final String ID = "ForkLift";
+    private static final String ID = "ForkLift";
     private Options options = new Options(ID);
 
 
-    protected DcMotor lift;
-    protected Servo rightClaw;
-    protected Servo leftClaw;
+    private DcMotor lift;
+    private Servo rightClaw;
+    private Servo leftClaw;
 
     @Override
     public boolean init(HardwareMap hardwareDevices) {
         lift = hardwareDevices.dcMotor.get(options.get("lift"));
+        lift.setDirection(DcMotorSimple.Direction.REVERSE);
         rightClaw = hardwareDevices.servo.get(options.get("rightClaw"));
         leftClaw = hardwareDevices.servo.get(options.get("leftClaw"));
         leftClaw.setDirection(Servo.Direction.REVERSE);
@@ -44,13 +46,13 @@ public class Forklift extends SubSystem {
     }
 
     public void close() {
-        rightClaw.setPosition(0.05);
-        leftClaw.setPosition(0.05);
+        rightClaw.setPosition(0.6);
+        leftClaw.setPosition(0.6);
     }
 
     public void open() {
-        rightClaw.setPosition(0.9);
-        leftClaw.setPosition(0.9);
+        rightClaw.setPosition(0.1);
+        leftClaw.setPosition(0.1);
     }
 
     @Override

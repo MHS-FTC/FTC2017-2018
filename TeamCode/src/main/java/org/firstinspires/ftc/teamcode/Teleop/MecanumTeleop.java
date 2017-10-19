@@ -25,7 +25,7 @@ public class MecanumTeleop extends OpMode {
     @Override
     public void loop() {
         robot.tick();
-
-        robot.drive.drive(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
+        //the y direction of the joysticks needs to be reversed
+        robot.drive.drive(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
     }
 }
