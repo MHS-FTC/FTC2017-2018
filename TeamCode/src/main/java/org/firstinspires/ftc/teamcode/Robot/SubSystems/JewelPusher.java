@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
 import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.SubSystem;
 import org.firstinspires.ftc.teamcode.Utilitys.Direction;
-import org.firstinspires.ftc.teamcode.Utilitys.Team;
 
 /**
  * Created by ethan.hampton on 10/18/2017.
@@ -15,7 +14,8 @@ import org.firstinspires.ftc.teamcode.Utilitys.Team;
  */
 
 public class JewelPusher extends SubSystem {
-    private Options options = new Options("JewelPusher");
+    public static final String ID = "JewelPusher";
+    private Options options = new Options(ID);
 
     private Servo drop;
     private Servo hitter;
@@ -62,25 +62,6 @@ public class JewelPusher extends SubSystem {
     }
 
 
-    /**
-     * @param team what team we are on
-     */
-    public void hitCorrectBall(Team team) {
-        Team leftBall = Team.UNKNOWN;
-        // TODO: 10/18/2017 Find correct color to hit and hit it
-        if (!(team == Team.BLUE_TEAM || team == Team.RED_TEAM) || !(leftBall == Team.BLUE_TEAM || leftBall == Team.RED_TEAM)) {
-            return;
-        }
-        dropArm();
-        if (leftBall.equals(team)) {
-            hit(Direction.LEFT);
-        } else {
-            hit(Direction.RIGHT);
-        }
-        hit(Direction.MIDDLE);
-        liftArm();
-
-    }
 
     @Override
     public Options options() {

@@ -29,5 +29,12 @@ public class JewelTest extends OpMode {
         } else {
             robot.pusher.hit(Direction.MIDDLE);
         }
+
+        if (gamepad1.dpad_up) {
+            robot.pusher.liftArm();
+        }
+        if (gamepad1.dpad_down) {
+            robot.pusher.dropArm();
+        }
     }
 }
