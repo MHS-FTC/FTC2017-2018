@@ -14,12 +14,12 @@ import org.firstinspires.ftc.teamcode.Utilitys.Team;
 // TODO: 10/19/2017 Implement class
 public class JewelHitter extends Module {
     private Options options = new Options("JewelHitter");
-    JewelPusher j = (JewelPusher) robot.getSubSystem(JewelPusher.ID);
+    private JewelPusher j = (JewelPusher) robot.getSubSystem(JewelPusher.ID);
 
     /**
      * @param team what team we are on
      */
-    public void hitCorrectBall(Team team) {
+    private void hitCorrectBall(Team team) {
 
         Team leftBall = Team.UNKNOWN;
         // TODO: 10/18/2017 Find correct color to hit and hit it
