@@ -43,21 +43,20 @@ public class JewelPusher extends SubSystem {
     }
 
 
-    public boolean hit(Direction direction) {
+    public void hit(Direction direction) {
         switch (direction) {
             case LEFT:
                 hitter.setPosition(0);
-                return true;
+                return;
             case RIGHT:
                 hitter.setPosition(1);
-                return true;
+                return;
             case MIDDLE:
                 hitter.setPosition(0.5);
-                return true;
+                return;
             case UNKNOWN:
-                return false;
+                return;
             default:
-                return false;
         }
     }
 

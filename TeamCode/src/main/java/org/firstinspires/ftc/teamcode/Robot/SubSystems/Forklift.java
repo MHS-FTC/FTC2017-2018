@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
 import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.SubSystem;
+import org.firstinspires.ftc.teamcode.Utilitys.Constants;
 
 /**
  * Created by Ethan Hampton on 8/19/17.
@@ -46,13 +47,13 @@ public class Forklift extends SubSystem {
     }
 
     public void close() {
-        rightClaw.setPosition(0.6);
-        leftClaw.setPosition(0.6);
+        rightClaw.setPosition(Constants.CLOSE_POSITION);
+        leftClaw.setPosition(Constants.CLOSE_POSITION);
     }
 
     public void open() {
-        rightClaw.setPosition(0.1);
-        leftClaw.setPosition(0.1);
+        rightClaw.setPosition(Constants.OPEN_POSITION);
+        leftClaw.setPosition(Constants.OPEN_POSITION);
     }
 
     @Override
