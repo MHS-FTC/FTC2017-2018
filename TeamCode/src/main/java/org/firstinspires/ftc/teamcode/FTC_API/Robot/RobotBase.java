@@ -18,12 +18,12 @@ import java.util.HashSet;
 
 public class RobotBase {
 
-    private HashMap<String, SubSystem> subSystems = new HashMap<>();
-    private HashSet<String> needsTick = new HashSet<>();
+    private HashMap<String, SubSystem> subSystems = new HashMap<String, SubSystem>();
+    private HashSet<String> needsTick = new HashSet<String>();
 
     private ElapsedTime time = new ElapsedTime();
 
-    public void addSubSystem(SubSystem sub) {
+    protected void addSubSystem(SubSystem sub) {
         subSystems.put(sub.options().getName(), sub);
     }
 
@@ -60,6 +60,7 @@ public class RobotBase {
                 subSystems.values()) {
             s.start();
         }
+        startTime();
     }
 
     //called to stop all subsystems
@@ -74,11 +75,14 @@ public class RobotBase {
      * Tick method that should be called in the tick method of {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} to insure all submodules have a chance to update and get info from sensors and motors
      */
     public void tick() {
-        for (String s :
-                needsTick) {
-            SubSystem sub = subSystems.get(s);
-            sub.tick();
+        if (needsTick != null && !needsTick.isEmpty()) {
+            for (String s :
+                    needsTick) {
+                SubSystem sub = subSystems.get(s);
+                sub.tick();
+            }
         }
+
     }
 
     public void startTime(){

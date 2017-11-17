@@ -33,6 +33,5 @@ public class BasicAutonomous extends OpMode {
         auto.loop();
 
         telemetry.addData("Test", "Test");//Add telemetry
-        bot.drive.ID();//random here just to get rid off errors
     }
 }
