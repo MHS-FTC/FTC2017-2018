@@ -32,6 +32,6 @@ public class BasicAutonomous extends OpMode {
     public void loop() {
         auto.loop();
 
-        telemetry.addData("Test", "Test");//Add telemetry
+        telemetry.addData("Test", bot.drive.isFunctioning());//Add telemetry
     }
 }

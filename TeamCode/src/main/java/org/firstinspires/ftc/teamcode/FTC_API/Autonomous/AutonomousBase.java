@@ -16,6 +16,8 @@ public class AutonomousBase {
     private Module[][] steps;
     private int currentStep = 0;
     private int currentPosition = 0;
+    private int totalSteps;
+    private boolean isDone = false;
 
     private boolean isFirstLoop = true;
 
@@ -23,6 +25,7 @@ public class AutonomousBase {
         robot.init(map);//starts and initializes the robot
         robot.start();
         this.steps = steps;
+        totalSteps = steps.length;
         //This was too hard
         this.robot = robot;
     }
@@ -62,25 +65,29 @@ public class AutonomousBase {
         }
         */
 
+        if (!isDone) {
+            //old way of doing things
+            Module current = steps[currentStep][currentPosition];// loads current running module
+            if (isFirstLoop) {
+                current.init(robot);
+                current.start();
+                isFirstLoop = false;
+            }
+            current.tick();//runs tick for current module
+            if (current.isDone()) {//if the current module is done
+                currentPosition = 0;
+                currentPosition = current.stop();//stop it
 
-        //old way of doing things
-        Module current = steps[currentStep][currentPosition];// loads current running module
-        if (isFirstLoop) {
-            current.init(robot);
-            current.start();
-            isFirstLoop = false;
+                currentStep++;//get new module, start and initialize it
+                if (currentStep < (totalSteps - 1)) {
+                    current = steps[currentStep][currentPosition];
+                    current.init(robot);
+                    current.start();
+                } else {
+                    isDone = true;
+                }
+            }
         }
-        current.tick();//runs tick for current module
-        if (current.isDone()) {//if the current module is done
-            currentPosition = 0;
-            currentPosition = current.stop();//stop it
-
-            currentStep++;//get new module, start and initialize it
-            current = steps[currentStep][currentPosition];
-            current.init(robot);
-            current.start();
-        }
-
     }
 
     public RobotBase getRobot() {

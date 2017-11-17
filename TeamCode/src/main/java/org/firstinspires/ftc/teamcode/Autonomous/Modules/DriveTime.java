@@ -17,6 +17,8 @@ public class DriveTime extends Module {
     private boolean isDone = false;
     private double startTime;
 
+    private int driveTime;
+
     @Override
     public void start() {
         drive = (MecanumWheelDrive) robot.getSubSystem(MecanumWheelDrive.ID);
@@ -27,7 +29,7 @@ public class DriveTime extends Module {
 
     @Override
     public void tick() {
-        if ((robot.getTimeMilliseconds() - startTime) > Integer.getInteger(options.get("drive_time"))) {
+        if ((robot.getTimeMilliseconds() - startTime) > driveTime) {
             drive.drive(0, 0, 0);
             isDone = true;
         }
@@ -56,7 +58,7 @@ public class DriveTime extends Module {
     }
 
     public DriveTime setTime(int time) {
-        options.add("drive_time", String.valueOf(time));
+        driveTime = time;
         return this;
     }
 }
