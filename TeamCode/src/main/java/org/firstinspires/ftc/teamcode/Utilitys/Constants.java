@@ -7,6 +7,6 @@ package org.firstinspires.ftc.teamcode.Utilitys;
  */
 
 public class Constants {
-    public static final double CLOSE_POSITION = 0.6;
+    public static final double CLOSE_POSITION = 0.3;
     public static final double OPEN_POSITION = 0.1;
 }
