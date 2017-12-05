@@ -26,9 +26,9 @@ public class MainTeleop extends OpMode {
     public void loop() {
         robot.tick();
 
-        //drive the robot (in order, strafe, forward backward, rotate)
+        //drive the robot (in order, forward backward, rotate)
         //NOTE: Y direction of joysticks needs to be reversed
-        robot.drive.drive(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
+        robot.drive.driveTank(-gamepad1.left_stick_y, -gamepad1.right_stick_y);
 
 
         //control forklift from both controllers

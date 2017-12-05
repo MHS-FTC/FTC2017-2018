@@ -56,7 +56,7 @@ public class MecanumWheelDrive extends SubSystem {
      * @param leftPower  how fast the left motors should go
      * @param rightPower how fast the right motors should go
      */
-    public void driveForward(double leftPower, double rightPower) {
+    public void driveTank(double leftPower, double rightPower) {
         leftFrontMotor.setPower(leftPower);
         leftBackMotor.setPower(leftPower);
         rightFrontMotor.setPower(rightPower);

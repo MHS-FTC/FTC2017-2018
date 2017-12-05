@@ -66,11 +66,10 @@ public class FourWheelDrive extends SubSystem {
     /**
      * TODO: should dead zone joystick to insure we are not burning out motors
      *
-     * @param strafe  how much to strafe, from -1 to 1, 1 is full right. left x = strafe
      * @param forward how much to go forward and backwards, from -1 to 1, 1 is full forwards
      * @param rotate  how much to rotate, from -1 to 1, 1 is full right
      */
-    public void driveArcade(double strafe, double forward, double rotate) {
+    public void driveArcade(double forward, double rotate) {
         double frontLeft = forward + rotate;
         double rearLeft = forward + rotate;
         double frontRight = forward - rotate;
