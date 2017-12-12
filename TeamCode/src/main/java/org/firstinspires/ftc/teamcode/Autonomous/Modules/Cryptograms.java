@@ -14,7 +14,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefau
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
-import org.firstinspires.ftc.teamcode.Robot.SubSystems.JewelPusher;
 import org.firstinspires.ftc.teamcode.Utilitys.Constants;
 import org.firstinspires.ftc.teamcode.Utilitys.Direction;
 import org.firstinspires.ftc.teamcode.Utilitys.Team;
@@ -24,41 +23,21 @@ import org.firstinspires.ftc.teamcode.Utilitys.Team;
  * <p>
  * Autonomous program with the capacity to do hit the right jewels. Needs some work
  */
-// TODO: 10/19/2017 Implement class
-public class JewelHitter extends Module {
-    private Options options = new Options("JewelHitter");
-    private JewelPusher j = (JewelPusher) robot.getSubSystem(JewelPusher.ID);
 
-    private Mode currentMode = Mode.UNKNOWN;
+public class Cryptograms extends Module {
+    private Options options = new Options("Cryptogram Detector");
 
-    OpenGLMatrix lastLocation = null;
+    private OpenGLMatrix lastLocation = null;
+    private Direction direction = Direction.UNKNOWN;
+    private boolean done = false;
 
     /**
      * vuforia is the variable we will use to store our instance of the Vuforia
      * localization engine.
      */
-    VuforiaLocalizer vuforia;
-    VuforiaTrackable relicTemplate;
+    private VuforiaLocalizer vuforia;
+    private VuforiaTrackable relicTemplate;
 
-    /**
-     * @param team what team we are on
-     */
-    private void hitCorrectBall(Team team) {
-
-        Team leftBall = Team.UNKNOWN;
-        // TODO: 10/18/2017 Find correct color to hit and hit it
-        if (!(team == Team.BLUE_TEAM || team == Team.RED_TEAM) || !(leftBall == Team.BLUE_TEAM || leftBall == Team.RED_TEAM)) {
-            return;//Don't do anything if we don't have proper input values
-        }
-        if (leftBall.equals(team)) {
-            j.hit(Direction.LEFT);
-        } else {
-            j.hit(Direction.RIGHT);
-        }
-        //hit(Direction.MIDDLE);
-        //liftArm();
-
-    }
 
     private void startDetection() {
         //int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
@@ -87,7 +66,7 @@ public class JewelHitter extends Module {
         relicTrackables.activate();
     }
 
-    public Direction detectPosition() {
+    private Direction detectPosition() {
 
         /*
          * See if any of the instances of relicTemplate are currently visible.
@@ -147,26 +126,43 @@ public class JewelHitter extends Module {
 
     @Override
     public void start() {
-        if (currentMode == Mode.HIT_MODE) {
-            j.dropArm();
-        } else if (currentMode == Mode.DETECT_MODE) {
             startDetection();
-        }
+
     }
 
 
     @Override
     public void tick() {
-        hitCorrectBall(Team.valueOf(options().get("team")));
-    }
-
-    public void setMode(Mode mode) {
-        this.currentMode = mode;
+        Direction updated = detectPosition();
+        //filter out invalid direction
+        if (updated != Direction.UNKNOWN) {
+            //if direction has been changed and is not different (has to agree two times in order to be considered done)
+            if (direction != Direction.UNKNOWN && updated == direction) {
+                done = true;
+            } else if (updated != direction) {
+                direction = updated;
+            }
+        }
     }
 
     @Override
     public boolean isDone() {
-        return false;// TODO: 10/25/2017 How to stop when the servo has moved the correct amount. Will require real world testing.. Ugh
+        return done;
+    }
+
+    @Override
+    public int stop() {
+        switch (direction) {
+            case LEFT:
+                return 0;
+            case MIDDLE:
+                return 1;
+            case RIGHT:
+                return 2;
+            default:
+                //should never hit this
+                return 3;
+        }
     }
 
     @Override
@@ -180,7 +176,7 @@ public class JewelHitter extends Module {
         return new String[0];
     }
 
-    public JewelHitter team(Team team) {
+    public Cryptograms team(Team team) {
         options().add("team", team.name());
         return this;
     }
@@ -189,7 +185,4 @@ public class JewelHitter extends Module {
         return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
     }
 
-    enum Mode {
-        DETECT_MODE, HIT_MODE, UNKNOWN
-    }
 }

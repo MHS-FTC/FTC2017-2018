@@ -11,9 +11,15 @@ import org.firstinspires.ftc.teamcode.FTC_API.Robot.RobotBase;
 
 public abstract class Module {
     protected RobotBase robot;
+    protected int positionInArray;
 
-    public void init(RobotBase robot) {
+    /**
+     * @param robot           the robot to reference
+     * @param positionInArray where this module was stored in array (position 0, position 1, position 2, etc.)
+     */
+    public void init(RobotBase robot, int positionInArray) {
         this.robot = robot;
+        this.positionInArray = positionInArray;
     }
 
     abstract public void start();

@@ -4,6 +4,7 @@ import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.FTC_API.Examples.Drive;
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
 import org.firstinspires.ftc.teamcode.Robot.SubSystems.MecanumWheelDrive;
+import org.firstinspires.ftc.teamcode.Utilitys.Constants;
 
 /**
  * Created by Ethan Hampton on 8/19/17.
@@ -18,13 +19,15 @@ public class DriveTime extends Module {
     private double startTime;
 
     private int driveTime;
+    private double forwardSpeed = Constants.DEFAULT_SPEED;
+    private double turnSpeed = 0;
 
     @Override
     public void start() {
         drive = (MecanumWheelDrive) robot.getSubSystem(MecanumWheelDrive.ID);
         startTime = robot.getTimeMilliseconds();
 
-        drive.drive(0, Double.valueOf(options.get("forward_speed")), Double.valueOf(options.get("turn_speed")));
+        drive.drive(0, forwardSpeed, turnSpeed);
     }
 
     @Override
@@ -46,14 +49,30 @@ public class DriveTime extends Module {
     }
 
     @Override
+    public int stop() {
+        //just pass through the position, this allows for "multithreaded" things that can be called
+        return positionInArray;
+    }
+
+    /**
+     * Resets the position in array number so you can changing it in the next step
+     *
+     * @return this object for building
+     */
+    public DriveTime resetPositionInArray() {
+        positionInArray = 0;
+        return this;
+    }
+
+    @Override
     public String[] requiredSubSystems() {
         return new String[]{Drive.ID};
     }
 
 
     public DriveTime setSpeeds(double forwardSpeed, double turnSpeed) {
-        options.add("forward_speed", String.valueOf(forwardSpeed));
-        options.add("turn_speed", String.valueOf(turnSpeed));
+        this.forwardSpeed = forwardSpeed;
+        this.turnSpeed = turnSpeed;
         return this;
     }
 

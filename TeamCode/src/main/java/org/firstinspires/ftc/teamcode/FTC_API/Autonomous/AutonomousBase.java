@@ -69,19 +69,26 @@ public class AutonomousBase {
             //old way of doing things
             Module current = steps[currentStep][currentPosition];// loads current running module
             if (isFirstLoop) {
-                current.init(robot);
+                current.init(robot, 0);
                 current.start();
                 isFirstLoop = false;
             }
             current.tick();//runs tick for current module
             if (current.isDone()) {//if the current module is done
-                currentPosition = 0;
-                currentPosition = current.stop();//stop it
-
                 currentStep++;//get new module, start and initialize it
+
+                currentPosition = 0;
+                currentPosition = current.stop();//stop it and get the where the module wants the next step to go
+                int maxPosition = steps[currentStep].length - 1;//get amount of modules currently available in the next step
+                int position;
+                if (currentPosition > maxPosition) {//if the current position does not exist then set it to 0
+                    position = 0;
+                } else {
+                    position = currentPosition;//otherwise just use the position given
+                }
                 if (currentStep < (totalSteps - 1)) {
-                    current = steps[currentStep][currentPosition];
-                    current.init(robot);
+                    current = steps[currentStep][position];
+                    current.init(robot, currentPosition);//initialize it with the passed through position so it can be passed through multiple times
                     current.start();
                 } else {
                     isDone = true;
