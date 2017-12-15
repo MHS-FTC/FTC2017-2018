@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.configuration.MotorConfigurationType;
 
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
-import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.SubSystem;
+import org.firstinspires.ftc.teamcode.Robot.SubSystems.Templates.DriveSystemTemplate;
 
 /**
  * Created by Ethan Hampton on 8/19/17.
@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.SubSystem;
  */
 
 
-public class FourWheelDrive extends SubSystem {
+public class FourWheelDrive extends DriveSystemTemplate {
     private Options options = new Options(ID);
     protected DcMotor leftFrontMotor;
     protected DcMotor rightFrontMotor;
@@ -44,12 +44,8 @@ public class FourWheelDrive extends SubSystem {
         return this;
     }
 
-    public FourWheelDrive setMotorType(MotorConfigurationType type) {
-        leftFrontMotor.setMotorType(type);
-        rightFrontMotor.setMotorType(type);
-        leftBackMotor.setMotorType(type);
-        rightBackMotor.setMotorType(type);
-        return this;
+    public MotorConfigurationType getType() {
+        return rightFrontMotor.getMotorType();
     }
 
     /**
@@ -86,6 +82,15 @@ public class FourWheelDrive extends SubSystem {
         // Ch4 = Left joystick X-axis
     }
 
+    @Override
+    public DcMotor[] getRightSideMotors() {
+        return new DcMotor[]{rightFrontMotor, rightBackMotor};
+    }
+
+    @Override
+    public DcMotor[] getLeftSideMotors() {
+        return new DcMotor[]{rightFrontMotor, rightBackMotor};
+    }
 
     @Override
     public Options options() {

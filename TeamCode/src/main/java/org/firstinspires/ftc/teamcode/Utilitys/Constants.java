@@ -13,4 +13,5 @@ public class Constants {
 
 
     public static final double DEFAULT_SPEED = 0.75;//default speed for the robot
+    public static final double WHEEL_CIRCUMFERENCE = 3 * Math.PI;
 }
