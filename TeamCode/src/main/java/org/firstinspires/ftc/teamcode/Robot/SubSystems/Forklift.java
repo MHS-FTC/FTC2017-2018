@@ -47,13 +47,13 @@ public class Forklift extends SubSystem {
     }
 
     public void close() {
-        rightClaw.setPosition(Constants.CLOSE_POSITION);
-        leftClaw.setPosition(Constants.CLOSE_POSITION);
+        rightClaw.setPosition(Constants.FORKLIFT_CLOSE_POSITION);
+        leftClaw.setPosition(Constants.FORKLIFT_CLOSE_POSITION);
     }
 
     public void open() {
-        rightClaw.setPosition(Constants.OPEN_POSITION);
-        leftClaw.setPosition(Constants.OPEN_POSITION);
+        rightClaw.setPosition(Constants.FORKLIFT_OPEN_POSITION);
+        leftClaw.setPosition(Constants.FORKLIFT_OPEN_POSITION);
     }
 
     @Override
