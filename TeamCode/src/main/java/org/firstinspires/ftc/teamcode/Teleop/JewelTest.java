@@ -23,18 +23,18 @@ public class JewelTest extends OpMode {
     @Override
     public void loop() {
         if (gamepad1.left_bumper) {
-            robot.pusher.hit(Direction.LEFT);
+            robot.jewel.hit(Direction.LEFT);
         } else if (gamepad1.right_bumper) {
-            robot.pusher.hit(Direction.RIGHT);
+            robot.jewel.hit(Direction.RIGHT);
         } else {
-            robot.pusher.hit(Direction.MIDDLE);
+            robot.jewel.hit(Direction.MIDDLE);
         }
 
         if (gamepad1.dpad_up) {
-            robot.pusher.liftArm();
+            robot.jewel.liftArm();
         }
         if (gamepad1.dpad_down) {
-            robot.pusher.dropArm();
+            robot.jewel.dropArm();
         }
     }
 }

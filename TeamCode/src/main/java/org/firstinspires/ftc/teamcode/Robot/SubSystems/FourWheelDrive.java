@@ -46,7 +46,7 @@ public class FourWheelDrive extends DriveSystemTemplate {
 
     public MotorConfigurationType getType() {
         return rightFrontMotor.getMotorType();
-    }
+    }// TODO: 1/1/2018 Make sure all motors are the same type
 
     /**
      * @param leftPower  how fast the left motors should go

@@ -13,13 +13,13 @@ import org.firstinspires.ftc.teamcode.Robot.SubSystems.JewelPusher;
 
 public class Robot extends RobotBase {
     public FourWheelDrive drive = new FourWheelDrive()
-            .setMotorNames("leftFront", "rightFront", "leftBack", "rightBack");
+            .setMotorNames("leftFront", "rightFront", "leftBack", "rightBack");//Drives the robot
     public Forklift forklift = new Forklift().setMotorNames("lift", "leftClaw", "rightClaw");
-    public JewelPusher pusher = new JewelPusher().setServoNames("drop", "hit");
+    public JewelPusher jewel = new JewelPusher().setServoNames("drop", "hit");
 
     public Robot() {
         addSubSystem(drive);
         addSubSystem(forklift);
-        addSubSystem(pusher);
+        addSubSystem(jewel);
     }
 }

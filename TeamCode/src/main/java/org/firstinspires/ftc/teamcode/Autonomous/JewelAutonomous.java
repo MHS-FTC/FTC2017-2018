@@ -22,15 +22,15 @@ public class JewelAutonomous extends OpMode {
     private Robot bot;
     private final Module[][] steps = new Module[][]{
             {new CallFunction().setFunction(() -> {
-                bot.pusher.dropArm();
+                bot.jewel.dropArm();
             })},
             {new Wait().setWaitTime(1000)},
             {new CallFunction().setFunction(() -> {
-                bot.pusher.hit(Direction.LEFT);
+                bot.jewel.hit(Direction.LEFT);
             })},//fix this
             {new Wait().setWaitTime(1000)},
             {new CallFunction().setFunction(() -> {
-                bot.pusher.reset();
+                bot.jewel.reset();
             })},
             {new DriveTime().setSpeeds(0.85, 0).setTime(2500)},
     };
