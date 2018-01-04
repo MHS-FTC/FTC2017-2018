@@ -58,7 +58,7 @@ public class MainTeleop extends OpMode {
 
         robot.relicGrabber.setClawPosition(relicClawPosition);//sets the actual claw position
 
-        robot.relicGrabber.rotate(gamepad2.left_trigger);
+        robot.relicGrabber.rotate(gamepad2.left_trigger);//Rotates the claw
 
 
         //control claws for forklift from both controllers
