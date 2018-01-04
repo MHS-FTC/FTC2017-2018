@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
 import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.SubSystem;
-import org.firstinspires.ftc.teamcode.Utilitys.Constants;
 
 /**
  * Created by Ethan Hampton on 1/1/18.
@@ -31,6 +30,12 @@ public class RelicGrabber extends SubSystem {
         return true;
     }
 
+    /**
+     * @param extender The servo used to extend the relic grabber
+     * @param claw     The actual claw
+     * @param rotate   The servo used to rotate the claw
+     * @return this object for construction
+     */
     public RelicGrabber setMotorNames(String extender, String claw, String rotate) {
         options.add("extender", extender);
         options.add("claw", claw);
@@ -57,12 +62,8 @@ public class RelicGrabber extends SubSystem {
         rotate.setPosition(position);
     }
 
-    public void closeClaw() {
-        claw.setPosition(Constants.RELIC_GRABBER_CLOSE_POSITION);
-    }
-
-    public void openClaw() {
-        claw.setPosition(Constants.RELIC_GRABBER_OPEN_POSITION);
+    public void setClawPosition(double position) {
+        claw.setPosition(position);
     }
 
     @Override
