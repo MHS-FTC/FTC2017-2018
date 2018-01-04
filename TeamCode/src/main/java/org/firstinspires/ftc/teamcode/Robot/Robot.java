@@ -4,6 +4,7 @@ import org.firstinspires.ftc.teamcode.FTC_API.Robot.RobotBase;
 import org.firstinspires.ftc.teamcode.Robot.SubSystems.Forklift;
 import org.firstinspires.ftc.teamcode.Robot.SubSystems.FourWheelDrive;
 import org.firstinspires.ftc.teamcode.Robot.SubSystems.JewelPusher;
+import org.firstinspires.ftc.teamcode.Robot.SubSystems.MecanumWheelDrive;
 
 /**
  * Created by ethan.hampton on 9/19/2017.
@@ -12,7 +13,7 @@ import org.firstinspires.ftc.teamcode.Robot.SubSystems.JewelPusher;
  */
 
 public class Robot extends RobotBase {
-    public FourWheelDrive drive = new FourWheelDrive()
+    public MecanumWheelDrive drive = new MecanumWheelDrive()
             .setMotorNames("leftFront", "rightFront", "leftBack", "rightBack");//Drives the robot
     public Forklift forklift = new Forklift().setMotorNames("lift", "leftClaw", "rightClaw");
     public JewelPusher jewel = new JewelPusher().setServoNames("drop", "hit");

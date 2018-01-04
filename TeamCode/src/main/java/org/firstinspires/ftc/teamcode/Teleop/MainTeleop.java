@@ -28,14 +28,14 @@ public class MainTeleop extends OpMode {
 
         //drive the robot (in order, forward backward, rotate)
         //NOTE: Y direction of joysticks needs to be reversed
-        robot.drive.driveTank(-gamepad1.left_stick_y, -gamepad1.right_stick_y);
+        robot.drive.drive(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
 
 
         //control forklift from both controllers
         if (gamepad1.dpad_up || gamepad2.dpad_up) {
-            robot.forklift.raise(0.6);
-        } else if (gamepad1.dpad_down || gamepad2.dpad_down) {
             robot.forklift.raise(-0.6);
+        } else if (gamepad1.dpad_down || gamepad2.dpad_down) {
+            robot.forklift.raise(0.6);
         } else {
             robot.forklift.raise(0);
         }
