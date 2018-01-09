@@ -56,9 +56,11 @@ public class MainTeleop extends OpMode {
             relicClawPosition = 0.05;
         }
 
+        // TODO: 1/5/2018 Make this follow a square(?) scale for more precision
         robot.relicGrabber.setClawPosition(relicClawPosition);//sets the actual claw position
 
-        robot.relicGrabber.rotate(gamepad2.left_trigger);//Rotates the claw
+        // TODO: 1/8/2018 Set so positon is relative to straight up and down
+        robot.relicGrabber.rotate(1 - gamepad2.left_trigger);//Rotates the claw so it begins down and goes from there
 
 
         //control claws for forklift from both controllers
