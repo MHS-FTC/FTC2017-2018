@@ -4,6 +4,7 @@ import com.qualcomm.hardware.motors.NeveRest60Gearmotor;
 import com.qualcomm.robotcore.hardware.configuration.MotorConfigurationType;
 
 import org.firstinspires.ftc.teamcode.FTC_API.Robot.RobotBase;
+import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.DriveSystemTemplate;
 import org.firstinspires.ftc.teamcode.Robot.SubSystems.TwoWheelDrive;
 
 /**
@@ -19,5 +20,10 @@ public class SimpleRobot extends RobotBase {
 
     public SimpleRobot() {
         addSubSystem(drive);
+    }
+
+    @Override
+    public DriveSystemTemplate getDriveSystem() {
+        return drive;
     }
 }
