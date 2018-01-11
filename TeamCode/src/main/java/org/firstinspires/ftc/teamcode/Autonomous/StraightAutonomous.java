@@ -20,7 +20,7 @@ public class StraightAutonomous extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
     private final Module[][] steps = new Module[][]{
-            {new DriveTime().setSpeeds(0.85, 0).setTime(2500)},
+            {new DriveTime().setSpeeds(0.85, 0, 0).setTime(2500)},
             {new Wait().setWaitTime(2500)},//back up wait because I felt like it
             {new CallFunction().setFunction(() -> {
                 bot.drive.driveTank(0, 0);

@@ -31,7 +31,7 @@ public class MainTeleop extends OpMode {
 
         //drive the robot (in order, forward backward, rotate)
         //NOTE: Y direction of joysticks needs to be reversed
-        robot.drive.drive(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
+        robot.drive.driveMecanum(-gamepad1.left_stick_y, gamepad1.right_stick_x, gamepad1.left_stick_x);
 
 
         //control forklift from controller 1

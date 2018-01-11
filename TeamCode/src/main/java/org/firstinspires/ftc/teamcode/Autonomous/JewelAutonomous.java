@@ -32,7 +32,7 @@ public class JewelAutonomous extends OpMode {
             {new CallFunction().setFunction(() -> {
                 bot.jewel.reset();
             })},
-            {new DriveTime().setSpeeds(0.85, 0).setTime(2500)},
+            {new DriveTime().setSpeeds(0.85, 0, 0).setTime(2500)},
     };
 
     @Override

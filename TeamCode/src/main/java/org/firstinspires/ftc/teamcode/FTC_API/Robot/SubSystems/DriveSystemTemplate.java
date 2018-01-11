@@ -1,8 +1,6 @@
-package org.firstinspires.ftc.teamcode.Robot.SubSystems.Templates;
+package org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-
-import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.SubSystem;
 
 /**
  * Created by ethan.hampton on 12/15/2017.
@@ -14,6 +12,16 @@ public abstract class DriveSystemTemplate extends SubSystem {
     public abstract DcMotor[] getRightSideMotors();
 
     public abstract DcMotor[] getLeftSideMotors();
+
+    public abstract void driveTank(double leftPower, double rightPower);
+
+    /**
+     * @param forward amount forward from -1 to 1 inclusive
+     * @param turn    amount to turn from -1 to 1 inclusive, -1 being full power left, 1 being full power right
+     */
+    public abstract void driveArcade(double forward, double turn);
+
+    public abstract void driveMecanum(double forward, double turn, double strafe);
 
     public void setLeftSideTarget(int ticks) {
         for (DcMotor m : getLeftSideMotors()) {

@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.configuration.MotorConfigurationType;
 
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
-import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.SubSystem;
+import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.DriveSystemTemplate;
 
 /**
  * Created by Ethan Hampton on 8/19/17.
@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.SubSystem;
  * Simple TwoWheelDrive class that can be implemented and used
  */
 
-public class TwoWheelDrive extends SubSystem {
+public class TwoWheelDrive extends DriveSystemTemplate {
     public static final String ID = "TwoWheelDrive";
     private Options options = new Options(ID);
 
@@ -40,9 +40,23 @@ public class TwoWheelDrive extends SubSystem {
         return this;
     }
 
-    public void drive(double leftPower, double rightPower) {
+    @Override
+    public void driveTank(double leftPower, double rightPower) {
         leftMotor.setPower(leftPower);
         rightMotor.setPower(rightPower);
+    }
+
+    @Override
+    public void driveArcade(double forward, double turn) {
+        double left = forward + turn;
+        double right = forward - turn;
+
+        driveTank(left, right);
+    }
+
+    @Override
+    public void driveMecanum(double forward, double turn, double strafe) {
+        driveArcade(forward, turn);
     }
 
     @Override
@@ -50,4 +64,13 @@ public class TwoWheelDrive extends SubSystem {
         return options;
     }
 
+    @Override
+    public DcMotor[] getRightSideMotors() {
+        return new DcMotor[]{rightMotor};
+    }
+
+    @Override
+    public DcMotor[] getLeftSideMotors() {
+        return new DcMotor[]{leftMotor};
+    }
 }

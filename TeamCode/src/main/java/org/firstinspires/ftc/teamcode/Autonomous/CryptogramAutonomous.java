@@ -22,7 +22,7 @@ public class CryptogramAutonomous extends OpMode {
     private final Module[][] steps = new Module[][]{
             {new Cryptograms()},
             {new DriveTime().setTime(1000), new DriveTime().setTime(1500), new DriveTime().setTime(2000)},//the three possible positions for the cryptobox
-            {new DriveTime().setTime(500).setSpeeds(0, Constants.DEFAULT_SPEED)},//turn 90 degrees to line up
+            {new DriveTime().setTime(500).setSpeeds(0, Constants.DEFAULT_SPEED, 0)},//turn 90 degrees to line up
             {new DriveTime().setTime(500)},//drive forward into cryptobox
     };
 

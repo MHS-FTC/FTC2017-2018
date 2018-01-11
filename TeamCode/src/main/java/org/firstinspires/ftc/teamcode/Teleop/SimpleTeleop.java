@@ -25,6 +25,6 @@ public class SimpleTeleop extends OpMode {
     public void loop() {
         robot.tick();
 
-        robot.drive.drive(gamepad1.left_stick_y,gamepad1.right_stick_y);
+        robot.drive.driveTank(gamepad1.left_stick_y, gamepad1.right_stick_y);
     }
 }

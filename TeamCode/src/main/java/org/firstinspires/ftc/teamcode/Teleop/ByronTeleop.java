@@ -25,17 +25,17 @@ public class ByronTeleop extends OpMode {
     public void loop() {
         robot.tick();
 
-        robot.drive.drive(gamepad1.left_stick_y, gamepad1.right_stick_y);
+        robot.drive.driveTank(gamepad1.left_stick_y, gamepad1.right_stick_y);
 
 
         if (robot.getTimeMilliseconds() > 9000) {
-            robot.drive.drive(0, 0);
+            robot.drive.driveTank(0, 0);
         }
 
         if (gamepad2.a && robot.getTimeMilliseconds() > 8000) {
-            robot.drive.drive(1, 1);
+            robot.drive.driveTank(1, 1);
         } else {
-            robot.drive.drive(0, 0);
+            robot.drive.driveTank(0, 0);
         }
 
 

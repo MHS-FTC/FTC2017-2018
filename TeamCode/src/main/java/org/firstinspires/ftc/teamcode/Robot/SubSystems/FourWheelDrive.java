@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.configuration.MotorConfigurationType;
 
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
-import org.firstinspires.ftc.teamcode.Robot.SubSystems.Templates.DriveSystemTemplate;
+import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.DriveSystemTemplate;
 
 /**
  * Created by Ethan Hampton on 8/19/17.
@@ -66,20 +66,15 @@ public class FourWheelDrive extends DriveSystemTemplate {
      * @param rotate  how much to rotate, from -1 to 1, 1 is full right
      */
     public void driveArcade(double forward, double rotate) {
-        double frontLeft = forward + rotate;
-        double rearLeft = forward + rotate;
-        double frontRight = forward - rotate;
-        double rearRight = forward - rotate;
+        double left = forward + rotate;
+        double right = forward - rotate;
 
-        leftFrontMotor.setPower(frontLeft);
-        leftBackMotor.setPower(rearLeft);
-        rightFrontMotor.setPower(frontRight);
-        rightBackMotor.setPower(rearRight);
+        driveTank(left, right);
+    }
 
-        // Where:
-        // Ch1 = Right joystick X-axis
-        // Ch3 = Left joystick Y-axis
-        // Ch4 = Left joystick X-axis
+    @Override
+    public void driveMecanum(double forward, double turn, double strafe) {
+        driveArcade(forward, turn);
     }
 
     @Override

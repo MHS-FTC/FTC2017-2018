@@ -20,12 +20,12 @@ public class BasicAutonomous extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
     private final Module[][] steps = new Module[][]{
-            {new DriveTime().setSpeeds(0.85, 0).setTime(2000)},
-            // {new CallFunction().setFunction(() -> bot.drive.drive(0.9, 0, 0))},
+            {new DriveTime().setSpeeds(0.85, 0, 0).setTime(2000)},
+            // {new CallFunction().setFunction(() -> bot.driveMecanum.driveMecanum(0.9, 0, 0))},
             {new Wait().setWaitTime(2000)},
-            //{new CallFunction().setFunction(() -> bot.drive.drive(-0.9, 0, 0))},
+            //{new CallFunction().setFunction(() -> bot.driveMecanum.driveMecanum(-0.9, 0, 0))},
             {new Wait().setWaitTime(2000)},
-            //{new CallFunction().setFunction(() -> bot.drive.drive(0, 0, 0))},
+            //{new CallFunction().setFunction(() -> bot.driveMecanum.driveMecanum(0, 0, 0))},
     };
 
     @Override
