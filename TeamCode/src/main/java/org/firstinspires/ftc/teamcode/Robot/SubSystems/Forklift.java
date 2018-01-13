@@ -27,7 +27,6 @@ public class Forklift extends SubSystem {
     @Override
     public boolean init(HardwareMap hardwareDevices) {
         lift = hardwareDevices.dcMotor.get(options.get("lift"));
-        lift.setDirection(DcMotorSimple.Direction.REVERSE);
         rightClaw = hardwareDevices.servo.get(options.get("rightClaw"));
         leftClaw = hardwareDevices.servo.get(options.get("leftClaw"));
         leftClaw.setDirection(Servo.Direction.REVERSE);

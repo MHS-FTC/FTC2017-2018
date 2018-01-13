@@ -36,16 +36,16 @@ public class MainTeleop extends OpMode {
 
         //control forklift from controller 1
         if (gamepad1.dpad_up) {
-            robot.forklift.raise(-0.6);
-        } else if (gamepad1.dpad_down) {
             robot.forklift.raise(0.6);
+        } else if (gamepad1.dpad_down) {
+            robot.forklift.raise(-0.6);
         } else {
             robot.forklift.raise(0);
         }
 
         robot.relicGrabber.extendClaw(-gamepad2.left_stick_y);//extend the claw out based on left joystick. This sets speed
 
-        relicClawPosition += Range.scale(-gamepad2.right_stick_y, -1, 1, -0.1, 0.1);//scales the joystick to something reasonable for controlling the joystick.
+        relicClawPosition += Range.scale(-gamepad2.right_stick_y, -1, 1, -0.05, 0.05);//scales the joystick to something reasonable for controlling the joystick.
 
         //if the claws position is out of bounds then prevent that from happening
         //Note that I purposely am not going to the limits of the servo(0.95 instead of 1) so we don't break the servo
