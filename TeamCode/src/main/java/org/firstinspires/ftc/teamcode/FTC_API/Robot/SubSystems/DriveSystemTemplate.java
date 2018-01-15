@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.configuration.MotorConfigurationType;
 
 /**
  * Created by ethan.hampton on 12/15/2017.
@@ -22,6 +23,10 @@ public abstract class DriveSystemTemplate extends SubSystem {
     public abstract void driveArcade(double forward, double turn);
 
     public abstract void driveMecanum(double forward, double turn, double strafe);
+
+    public MotorConfigurationType getMotorType() {
+        return getRightSideMotors()[1].getMotorType();
+    }
 
     public void setLeftSideTarget(int ticks) {
         for (DcMotor m : getLeftSideMotors()) {

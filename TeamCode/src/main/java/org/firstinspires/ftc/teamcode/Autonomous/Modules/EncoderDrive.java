@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.FTC_API.Examples.Drive;
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
-import org.firstinspires.ftc.teamcode.Robot.SubSystems.FourWheelDrive;
+import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.DriveSystemTemplate;
 import org.firstinspires.ftc.teamcode.Utilitys.Constants;
 
 /**
@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.Utilitys.Constants;
 
 public class EncoderDrive extends Module {
     private Options options = new Options("Drive For Time");
-    private FourWheelDrive drive;
+    private DriveSystemTemplate drive;
     private boolean isDone = false;
     private double startTime;
 
@@ -31,7 +31,7 @@ public class EncoderDrive extends Module {
 
     @Override
     public void start() {
-        drive = (FourWheelDrive) robot.getSubSystem(FourWheelDrive.ID);
+        drive = robot.getDriveSystem();
         startTime = robot.getTimeMilliseconds();
 
 
@@ -53,8 +53,8 @@ public class EncoderDrive extends Module {
 
 
         //sets targets
-        leftTarget = (int) (leftRotations * drive.getType().getTicksPerRev());
-        rightTarget = (int) (rightRotations * drive.getType().getTicksPerRev());
+        leftTarget = (int) (leftRotations * drive.getMotorType().getTicksPerRev());
+        rightTarget = (int) (rightRotations * drive.getMotorType().getTicksPerRev());
 
         drive.resetAllEncoders();
         drive.setLeftSideTarget(leftTarget);
