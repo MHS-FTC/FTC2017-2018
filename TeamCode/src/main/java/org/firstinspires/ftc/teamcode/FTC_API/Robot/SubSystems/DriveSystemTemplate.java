@@ -25,7 +25,7 @@ public abstract class DriveSystemTemplate extends SubSystem {
     public abstract void driveMecanum(double forward, double turn, double strafe);
 
     public MotorConfigurationType getMotorType() {
-        return getRightSideMotors()[1].getMotorType();
+        return getRightSideMotors()[0].getMotorType();
     }
 
     public void setLeftSideTarget(int ticks) {

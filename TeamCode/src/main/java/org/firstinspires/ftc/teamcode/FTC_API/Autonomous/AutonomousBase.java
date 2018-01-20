@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.FTC_API.Autonomous;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.FTC_API.Robot.RobotBase;
 
@@ -93,6 +92,7 @@ public class AutonomousBase {
                 } else {
                     isDone = true;
                 }
+                currentPosition = position;//reset position, should be stored by module. This way we don't get any null errors when there is only one module to choose from
             }
         }
     }
