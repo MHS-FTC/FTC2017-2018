@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
@@ -18,7 +19,8 @@ public class StraightAutonomous extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
     private final Module[][] steps = new Module[][]{
-            {new DriveTime().setSpeeds(0.3, 0, 0).setTime(700)}
+            {new DriveTime().setSpeeds(0.3, 0, 0).setTime(1300)},
+            {new Wait().setWaitTime(1000)},
     };
 
     @Override

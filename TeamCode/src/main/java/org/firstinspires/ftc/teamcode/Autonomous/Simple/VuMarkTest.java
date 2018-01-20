@@ -15,8 +15,9 @@ import org.firstinspires.ftc.teamcode.Robot.Robot;
  * ByronAuto follows set steps to complete program.
  */
 
-@Autonomous(name = "StraightEncoderDrive", group = "production")
-public class VuMarkTest extends OpMode {
+@Autonomous(name = "VuMark Test", group = "production")
+public class VuMarkTest extends OpMode
+{
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
 
@@ -27,13 +28,15 @@ public class VuMarkTest extends OpMode {
     };
 
     @Override
-    public void init() {
+    public void init()
+    {
         bot = new Robot();
         auto.init(hardwareMap, bot, steps);
     }
 
     @Override
-    public void loop() {
+    public void loop()
+    {
         auto.loop();
 
         telemetry.addData("Test", bot.drive.isFunctioning());//Add telemetry

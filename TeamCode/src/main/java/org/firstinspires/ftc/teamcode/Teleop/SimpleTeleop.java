@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Teleop;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -11,7 +12,7 @@ import org.firstinspires.ftc.teamcode.Robot.SimpleRobot;
  *
  * Simple teleop drive
  */
-
+@Disabled
 @TeleOp(name = "SimpleTeleop", group = "test")
 public class SimpleTeleop extends OpMode {
     private SimpleRobot robot = new SimpleRobot();

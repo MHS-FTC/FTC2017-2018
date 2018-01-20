@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Teleop;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -11,6 +12,7 @@ import org.firstinspires.ftc.teamcode.Utilitys.Direction;
  * <p>
  * Tests the jewel servos
  */
+@Disabled
 @TeleOp(name = "JewelTest", group = "test")
 public class JewelTest extends OpMode {
     private Robot robot = new Robot();

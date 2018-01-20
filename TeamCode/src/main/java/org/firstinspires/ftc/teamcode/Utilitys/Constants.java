@@ -11,7 +11,7 @@ public class Constants {
     public static final double FORKLIFT_OPEN_POSITION = 0.1;
 
     public static final double DEFAULT_SPEED = 0.75;//default speed for the robot
-    public static final double WHEEL_CIRCUMFERENCE = 3 * Math.PI;
+    public static final double WHEEL_CIRCUMFERENCE = 4 * Math.PI;
 
 
     public static final double RELIC_GRABBER_CLOSE_POSITION = 0;
