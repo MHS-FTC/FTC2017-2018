@@ -17,7 +17,7 @@ public class Robot extends RobotBase {
     public MecanumWheelDrive drive = new MecanumWheelDrive()
             .setMotorNames("leftFront", "rightFront", "leftBack", "rightBack");//Drives the robot
     public Forklift forklift = new Forklift().setMotorNames("lift", "leftClaw", "rightClaw");
-    public JewelPusher jewel = new JewelPusher().setServoNames("drop", "hit");
+    public JewelPusher jewel = new JewelPusher().setHardwareNames("hit", "drop", "color","led");
     public RelicGrabber relicGrabber = new RelicGrabber().setMotorNames("extender", "claw", "rotate");
 
     public Robot() {

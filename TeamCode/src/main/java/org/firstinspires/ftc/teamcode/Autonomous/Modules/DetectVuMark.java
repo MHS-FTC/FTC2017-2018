@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autonomous.Modules;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
@@ -29,6 +30,7 @@ public class DetectVuMark extends Module {
 
     private int timesSeen;
     private RelicRecoveryVuMark lastSeen;
+    private Telemetry telemetry;
 
     @Override
     public void start() {
@@ -83,9 +85,9 @@ public class DetectVuMark extends Module {
 
     @Override
     public void tick() {
+        telemetry.addData("Mark",lastSeen);
 
-
-        /**
+        /*
          * See if any of the instances of {@link relicTemplate} are currently visible.
          * {@link RelicRecoveryVuMark} is an enum which can have the following values:
          * UNKNOWN, LEFT, CENTER, and RIGHT. When a VuMark is visible, something other than
@@ -179,5 +181,10 @@ public class DetectVuMark extends Module {
     @Override
     public String[] requiredSubSystems() {
         return new String[0];
+    }
+
+    public DetectVuMark setTelemetry(Telemetry telemetry) {
+        this.telemetry = telemetry;
+        return this;
     }
 }

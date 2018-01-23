@@ -19,4 +19,10 @@ public class Constants {
 
     public static final String VUFORIA_LICENCE_KEY = " AWOALvX/////AAAAGZ5IbuMfRkg6l+JvzSsKkrSBDUIpTrjNcRdwrYLsHQLxvF5NnrOx+XUZZ2iqzxjHjP5HweYVodqILB+nVSFyCo2Jals5RQroit5JwJq7qhG0Ljq/XqiRCqK4zlp5tvP8rx6KXfGSPAy1XkMCQwaSa/8EM3CjK2oPITNn1DSJ1H8i6Mxsed9lnz2NLOSQjbtHkRGBu55qoLAd+RGLpMxrN7+wipmNgbmFK9o//xL+UWl7i8VfaHKogIOwqIeaqsYxvSmfL+azS3OsTIn1Wbr5aEDJW9HhrRlsVwk0aJZ4vrTuZ3qN2slj2PxeHg520Q/NLmdImq+DA/WWoFeNLlI2Ld18xXAQ6ZrfigQV12BN+jfx ";
     public static final int TIMES_SEEN_TO_CONFIRM = 3;
+
+
+    public static final int LED_CHANNEL = 0;
+    public static final double JEWEL_LEFT = 0.4;
+    public static final double JEWEL_MIDDLE = 0.5;
+    public static final double JEWEL_RIGHT = 0.6;
 }
