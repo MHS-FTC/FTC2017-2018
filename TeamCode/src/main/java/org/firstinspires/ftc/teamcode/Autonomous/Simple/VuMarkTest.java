@@ -2,6 +2,7 @@
 package org.firstinspires.ftc.teamcode.Autonomous.Simple;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.DetectVuMark;
@@ -14,7 +15,7 @@ import org.firstinspires.ftc.teamcode.Robot.Robot;
  * Created by byron.nice on 1/1/2018.
  * ByronAuto follows set steps to complete program.
  */
-
+@Disabled
 @Autonomous(name = "VuMark Test", group = "production")
 public class VuMarkTest extends OpMode
 {

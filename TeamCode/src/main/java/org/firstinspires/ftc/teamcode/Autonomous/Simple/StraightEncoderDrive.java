@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.EncoderDrive;
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
@@ -19,6 +20,8 @@ public class StraightEncoderDrive extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
     private final Module[][] steps = new Module[][]{
+            {new EncoderDrive().setSpeed(0.30).setDistances(12,12)}, //Move forward
+            {new Wait().setWaitTime(1000)},
             {new EncoderDrive().setSpeed(0.30).setDistances(12,12)}, //Move forward
 
 

@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.Cryptograms;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.EncoderDrive;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
@@ -20,10 +21,11 @@ public class CryptogramAutonomous extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
     private final Module[][] steps = new Module[][]{
-            {new Cryptograms()},
-            {new DriveTime().setTime(1000), new DriveTime().setTime(1500), new DriveTime().setTime(2000)},//the three possible positions for the cryptobox
-            {new DriveTime().setTime(500).setSpeeds(0, Constants.DEFAULT_SPEED, 0)},//turn 90 degrees to line up
-            {new DriveTime().setTime(500)},//drive forward into cryptobox
+         //   {new Cryptograms()},
+          //  {new EncoderDrive().setDistances(12,12).setSpeed(0.3)},
+            {new DriveTime().setSpeeds(0,0,0.6).setTime(1000), new DriveTime().setSpeeds(0,0,0.6).setTime(1000), new DriveTime().setSpeeds(0,0,0.6).setTime(1000)},//the three possible positions for the cryptobox
+            //{new EncoderDrive().setSpeed(Constants.DEFAULT_SPEED).setDistances(6,6)},
+            {new DriveTime().setSpeeds(0,0,-0.6).setTime(1000), new DriveTime().setSpeeds(0,0,-0.6).setTime(1000), new DriveTime().setSpeeds(0,0,-0.6).setTime(1000)},
     };
 
     @Override

@@ -17,7 +17,7 @@ public abstract class Module {
      * @param robot           the robot to reference
      * @param positionInArray where this module was stored in array (position 0, position 1, position 2, etc.)
      */
-    public void init(RobotBase robot, int positionInArray) {
+    public void init(RobotBase robot, final int positionInArray) {
         this.robot = robot;
         this.positionInArray = positionInArray;
     }

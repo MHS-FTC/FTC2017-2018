@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autonomous.Simple;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
@@ -14,7 +15,7 @@ import org.firstinspires.ftc.teamcode.Robot.Robot;
  * <p>
  * A simple autonomous that simply moves forward
  */
-
+@Disabled
 @Autonomous(name = "Basic Autonomous")
 public class BasicAutonomous extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
