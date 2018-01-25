@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.Autonomous.Simple;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
@@ -22,6 +21,7 @@ public class StraightAutonomous extends OpMode {
             {new DriveTime().setSpeeds(0.3, 0, 0).setTime(1000)},
             {new Wait().setWaitTime(1000)},
             {new DriveTime().setSpeeds(0.3, 0, 0).setTime(1000)},
+            {new Wait()},
     };
 
     @Override
