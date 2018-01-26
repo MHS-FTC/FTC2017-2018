@@ -27,6 +27,7 @@ public class ByronAuto extends OpMode {
             {new DriveTime().setSpeeds(0.30, 0, 0).setTime(700)}, //Move forward
             {new Wait().setWaitTime(1000)}, //Wait
             {new DriveTime().setSpeeds(0.00, 0, 0.8).setTime(500)}, //Strafe right
+            {new Wait()}
 
 
     };

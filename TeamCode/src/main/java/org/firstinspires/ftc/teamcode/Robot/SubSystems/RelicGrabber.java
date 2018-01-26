@@ -40,6 +40,7 @@ public class RelicGrabber extends SubSystem {
         options.add("extender", extender);
         options.add("claw", claw);
         options.add("rotate", rotate);
+        // TODO: 1/25/2018 Implement initial servo positions
         return this;
     }
 

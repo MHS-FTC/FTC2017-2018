@@ -23,7 +23,7 @@ public class StraightEncoderDrive extends OpMode {
             {new EncoderDrive().setSpeed(0.30).setDistances(12,12)}, //Move forward
             {new Wait().setWaitTime(1000)},
             {new EncoderDrive().setSpeed(0.30).setDistances(12,12)}, //Move forward
-
+            {new Wait()}
 
     };
 

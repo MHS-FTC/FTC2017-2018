@@ -18,9 +18,8 @@ public class StraightAutonomous extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
     private final Module[][] steps = new Module[][]{
-            {new DriveTime().setSpeeds(0.3, 0, 0).setTime(1000)},
+            {new DriveTime().setSpeeds(0.3, 0, 0).setTime(600)},// TODO: 1/25/2018 Get a Straight program working.
             {new Wait().setWaitTime(1000)},
-            {new DriveTime().setSpeeds(0.3, 0, 0).setTime(1000)},
             {new Wait()},
     };
 

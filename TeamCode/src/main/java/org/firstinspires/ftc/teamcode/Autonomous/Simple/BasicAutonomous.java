@@ -27,6 +27,7 @@ public class BasicAutonomous extends OpMode {
             //{new CallFunction().setFunction(() -> bot.driveMecanum.driveMecanum(-0.9, 0, 0))},
             {new Wait().setWaitTime(2000)},
             //{new CallFunction().setFunction(() -> bot.driveMecanum.driveMecanum(0, 0, 0))},
+            {new Wait()}
     };
 
     @Override

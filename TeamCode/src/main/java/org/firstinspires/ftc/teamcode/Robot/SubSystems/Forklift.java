@@ -30,6 +30,7 @@ public class Forklift extends SubSystem {
         rightClaw = hardwareDevices.servo.get(options.get("rightClaw"));
         leftClaw = hardwareDevices.servo.get(options.get("leftClaw"));
         leftClaw.setDirection(Servo.Direction.REVERSE);
+        open();
         return true;
     }
 
