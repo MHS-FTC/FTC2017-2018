@@ -13,9 +13,9 @@ import org.firstinspires.ftc.teamcode.FTC_API.Robot.RobotBase;
 public class AutonomousBase {
     public RobotBase robot;
     private Module[][] steps;
-    private int currentStep = 0;//starts from zero
+    private int currentStep = 0;//zero indexed
     private int currentPosition = 0;
-    private int totalSteps;//starts from zero
+    private int totalSteps;
     private boolean isDone = false;
 
     private boolean isFirstLoop = true;
@@ -85,7 +85,7 @@ public class AutonomousBase {
                 } else {
                     position = currentPosition;//otherwise just use the position given
                 }
-                if (currentStep < totalSteps) {
+                if (currentStep <= (totalSteps - 1)) {//insures we have not gone through all our steps
                     current = steps[currentStep][position];
                     current.init(robot, currentPosition);//initialize it with the passed through position so it can be passed through multiple times
                     current.start();

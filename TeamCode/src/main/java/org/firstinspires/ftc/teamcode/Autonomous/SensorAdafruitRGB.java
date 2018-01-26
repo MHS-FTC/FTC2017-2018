@@ -30,7 +30,6 @@ import com.qualcomm.robotcore.hardware.LED;
  * is connected to the signal pin of digital port #5 (zero indexed)
  * of the Core Device Interface Module.
  *
- * You can use the X button on gamepad1 to toggle the LED on and off.
  *
  * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
@@ -38,18 +37,15 @@ import com.qualcomm.robotcore.hardware.LED;
 @Autonomous(name = "Sensor: AdafruitRGB", group = "Sensor") // Comment this out to add to the opmode list
 public class SensorAdafruitRGB extends LinearOpMode {
 
-    ColorSensor sensorRGB;
-    LED led;
+    private ColorSensor sensorRGB;
+    private LED led;
 
-    // we assume that the LED pin of the RGB sensor is connected to
-    // digital port 5 (zero indexed).
-    static final int LED_CHANNEL = 0;
 
     @Override
     public void runOpMode() {
 
         // hsvValues is an array that will hold the hue, saturation, and value information.
-        float hsvValues[] = {0F,0F,0F};
+        float hsvValues[] = {0F, 0F, 0F};
 
         // values is a reference to the hsvValues array.
         final float values[] = hsvValues;
@@ -59,13 +55,6 @@ public class SensorAdafruitRGB extends LinearOpMode {
         int relativeLayoutId = hardwareMap.appContext.getResources().getIdentifier("RelativeLayout", "id", hardwareMap.appContext.getPackageName());
         final View relativeLayout = ((Activity) hardwareMap.appContext).findViewById(relativeLayoutId);
 
-        // bPrevState and bCurrState represent the previous and current state of the button.
-        boolean bPrevState = false;
-        boolean bCurrState = false;
-
-        // bLedOn represents the state of the LED.
-        boolean bLedOn = true;
-
         // get a reference to our DeviceInterfaceModule object.
         led = hardwareMap.led.get("led");
 
@@ -73,34 +62,21 @@ public class SensorAdafruitRGB extends LinearOpMode {
         sensorRGB = hardwareMap.colorSensor.get("color");
 
         // turn the LED on in the beginning, just so user will know that the sensor is active.
-        led.enableLight( bLedOn);
+        led.enableLight(true);
 
         // wait for the start button to be pressed.
         waitForStart();
 
         // loop and read the RGB data.
         // Note we use opModeIsActive() as our loop condition because it is an interruptible method.
-        while (opModeIsActive())  {
+        while (opModeIsActive()) {
 
-            // check the status of the x button on gamepad.
-            bCurrState = gamepad1.x;
-
-            // check for button-press state transitions.
-            if ((bCurrState) && (bCurrState != bPrevState))  {
-
-                // button is transitioning to a pressed state. Toggle the LED.
-                bLedOn = !bLedOn;
-                led.enableLight(bLedOn);
-            }
-
-            // update previous state variable.
-            bPrevState = bCurrState;
 
             // convert the RGB values to HSV values.
             Color.RGBToHSV((sensorRGB.red() * 255) / 800, (sensorRGB.green() * 255) / 800, (sensorRGB.blue() * 255) / 800, hsvValues);
 
             // send the info back to driver station using telemetry function.
-            telemetry.addData("LED", bLedOn ? "On" : "Off");
+            telemetry.addData("LED", "On");
             telemetry.addData("Clear", sensorRGB.alpha());
             telemetry.addData("Red  ", sensorRGB.red());
             telemetry.addData("Green", sensorRGB.green());

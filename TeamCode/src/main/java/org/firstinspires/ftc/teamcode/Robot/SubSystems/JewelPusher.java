@@ -1,7 +1,9 @@
 package org.firstinspires.ftc.teamcode.Robot.SubSystems;
 
-import com.qualcomm.robotcore.hardware.*;
-
+import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.LED;
+import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
 import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.SubSystem;
 import org.firstinspires.ftc.teamcode.Utilitys.Constants;
@@ -30,6 +32,8 @@ public class JewelPusher extends SubSystem {
         color = hardwareDevices.colorSensor.get(options.get("color"));
         led = hardwareDevices.led.get(options.get("led"));
         turnOffLED();
+        hit(Direction.MIDDLE);
+        liftArm();
         return true;
     }
 
