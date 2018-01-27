@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Robot.SubSystems;
 
+import android.graphics.Color;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.LED;
@@ -25,6 +26,9 @@ public class JewelPusher extends SubSystem {
     private ColorSensor color;
     private LED led;
 
+    // colorValues is an array that will hold the hue, saturation, and value information.
+    private float colorValues[] = {0F, 0F, 0F};
+
     @Override
     public boolean init(HardwareMap hardwareDevices) {
         rotate = hardwareDevices.servo.get(options.get("rotate"));
@@ -46,11 +50,11 @@ public class JewelPusher extends SubSystem {
     }
 
     public void dropArm() {
-        hitter.setPosition(0.8);
+        hitter.setPosition(0.85);
     }
 
     public void liftArm() {
-        hitter.setPosition(0.1);
+        hitter.setPosition(0.01);
     }
 
     public void turnOnLED() {
@@ -79,9 +83,10 @@ public class JewelPusher extends SubSystem {
     }
 
     public Direction whereToHit(Direction currentlyReading, Team team) {
-        /* is true if the color sensor is reading more red than blue,
+        Color.RGBToHSV((color.red() * 255) / 800, (color.green() * 255) / 800, (color.blue() * 255) / 800, colorValues);
+        /* is true if the color sensor is less than 60 hue or greater than 300 then it is probably red,
          implies that the ball it is facing at is red */
-        boolean isRed = color.red() > color.blue();
+        boolean isRed = colorValues[0] < 30 || colorValues[0] > 330;//about a 30 number
         if (team.equals(Team.RED_TEAM)) {
             //if we are looking at a red ball and we are on the red team, hit the other one
             if (isRed) {
@@ -108,7 +113,7 @@ public class JewelPusher extends SubSystem {
     }
 
     public String colorSensorReadable() {
-        return "Red:" + color.red() + " Green:" + color.green() + " Blue:" + color.blue();
+        return "Red:" + color.red() + " Green:" + color.green() + " Blue:" + color.blue() + " Hue:" + colorValues[0];
     }
 
     @Override

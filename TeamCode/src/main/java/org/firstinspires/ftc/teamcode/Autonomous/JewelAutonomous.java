@@ -1,25 +1,29 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.JewelHitter;
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
+import org.firstinspires.ftc.teamcode.Utilitys.Team;
 
 /**
  * Created by ethan.hampton on 12/4/2017.
  * Straight autonomous that simply drives straight and parks
  */
 
-@Autonomous(name = "Jewels", group = "production")
+@Autonomous(name = "TEST: Jewels", group = "TEST")
+@Disabled
 public class JewelAutonomous extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
     private final Module[][] steps = new Module[][]{
-            {new JewelHitter()},
-            {new DriveTime().setSpeeds(0.85, 0, 0).setTime(500)},
+            {new JewelHitter().setTeam(Team.RED_TEAM)},
+            //{new DriveTime().setSpeeds(0.85, 0, 0).setTime(500)},
+            {new Wait().setWaitTime(30000)},
     };
 
     @Override

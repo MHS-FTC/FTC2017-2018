@@ -3,8 +3,8 @@ package org.firstinspires.ftc.teamcode.Teleop;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
-
 import org.firstinspires.ftc.teamcode.Robot.Robot;
+import org.firstinspires.ftc.teamcode.Utilitys.Direction;
 
 
 /**
@@ -35,9 +35,9 @@ public class MainTeleop extends OpMode {
 
 
         //control forklift from controller 1
-        if (gamepad1.dpad_up) {
+        if (gamepad1.dpad_up || gamepad2.dpad_up) {
             robot.forklift.raise(0.6);
-        } else if (gamepad1.dpad_down) {
+        } else if (gamepad1.dpad_down || gamepad2.dpad_down) {
             robot.forklift.raise(-0.6);
         } else {
             robot.forklift.raise(0);
@@ -59,7 +59,7 @@ public class MainTeleop extends OpMode {
         // TODO: 1/5/2018 Make this follow a square(?) scale for more precision
         robot.relicGrabber.setClawPosition(relicClawPosition);//sets the actual claw position
 
-        // TODO: 1/8/2018 Set so positon is relative to straight up and down
+        // TODO: 1/8/2018 Set so position is relative to straight up and down
         robot.relicGrabber.rotate(1 - gamepad2.left_trigger);//Rotates the claw so it begins down and goes from there
 
 
@@ -69,5 +69,8 @@ public class MainTeleop extends OpMode {
         } else {
             robot.forklift.close();
         }
+
+
+        robot.jewel.hit(Direction.RIGHT);//store servo
     }
 }

@@ -22,7 +22,7 @@ public class Constants {
 
 
     public static final int LED_CHANNEL = 0;
-    public static final double JEWEL_LEFT = 0.4;
-    public static final double JEWEL_MIDDLE = 0.5;
+    public static final double JEWEL_LEFT = 0.38;
+    public static final double JEWEL_MIDDLE = 0.48;
     public static final double JEWEL_RIGHT = 0.6;
 }

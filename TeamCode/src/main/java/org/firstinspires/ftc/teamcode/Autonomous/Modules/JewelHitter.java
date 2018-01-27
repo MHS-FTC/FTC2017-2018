@@ -15,6 +15,8 @@ public class JewelHitter extends Module {
     private JewelPusher jewel;
     private boolean isDone = false;
     private double startTime;
+    private Team team = Team.RED_TEAM;//by default is red team, ALWAYS override
+    private boolean hasHit = false;
 
     @Override
     public void start() {
@@ -36,21 +38,27 @@ public class JewelHitter extends Module {
     @Override
     public void tick() {
         double delta = (robot.getTimeMilliseconds() - startTime) / 1000;//The time (in seconds) this module has been running for
-        if (delta > 6) {
+        if (delta > 5) {
             isDone = true;//we are done
-        } else if (delta > 5) {
-            //raise arm
-            jewel.liftArm();
         } else if (delta > 4) {
-            //reset hit
-            jewel.turnOffLED();
+            //raise arm and reset hit
+            jewel.liftArm();
             jewel.hit(Direction.MIDDLE);
         } else if (delta > 2) {
-            //detect and hit based on color sensor
-            jewel.turnOnLED();
-            Direction hit = jewel.whereToHit(Direction.RIGHT, Team.RED_TEAM);// FIXME: 1/20/2018 Get Team  STOPSHIP: 1/22/2018 FIX THIS NOW
-            jewel.hit(hit);//hit the right jewel
+            if (!hasHit) {
+                //detect and hit based on color sensor
+                jewel.turnOnLED();
+                Direction hit = jewel.whereToHit(Direction.RIGHT, team);
+                jewel.hit(hit);//hit the right jewel
+                jewel.turnOffLED();
+                hasHit = true;//the servo should have hit, only run once
+            }
         }
+    }
+
+    public JewelHitter setTeam(Team team) {
+        this.team = team;
+        return this;
     }
 
     @Override

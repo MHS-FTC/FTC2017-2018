@@ -2,8 +2,8 @@
 package org.firstinspires.ftc.teamcode.Autonomous.Simple;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.EncoderDrive;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
@@ -16,6 +16,7 @@ import org.firstinspires.ftc.teamcode.Robot.Robot;
  */
 
 @Autonomous(name = "StraightEncoderDrive", group = "production")
+@Disabled
 public class StraightEncoderDrive extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;

@@ -1,8 +1,8 @@
-package org.firstinspires.ftc.teamcode.Autonomous;
+package org.firstinspires.ftc.teamcode.Autonomous.holding;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
@@ -16,6 +16,7 @@ import org.firstinspires.ftc.teamcode.Robot.Robot;
  */
 
 @Autonomous(name = "ByronAuto", group = "production")
+@Disabled
 public class ByronAuto extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;

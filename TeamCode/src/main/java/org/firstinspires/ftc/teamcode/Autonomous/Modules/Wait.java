@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.FTC_API.Options;
 
 public class Wait extends Module {
     private double startTime;
-    private long waitTime = 1000;
+    private long waitTime = 31000;
 
     public Wait setWaitTime(long waitTime) {
         this.waitTime = waitTime;

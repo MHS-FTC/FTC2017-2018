@@ -1,8 +1,9 @@
-package org.firstinspires.ftc.teamcode.Autonomous.Simple;
+package org.firstinspires.ftc.teamcode.Autonomous.holding;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.Cryptograms;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
@@ -14,13 +15,19 @@ import org.firstinspires.ftc.teamcode.Robot.Robot;
  * Straight autonomous that simply drives straight and parks
  */
 
-@Autonomous(name = "Straight", group = "production")
+@Autonomous(name = "Cryptogram", group = "testing")
 @Disabled
-public class StraightAutonomous extends OpMode {
+public class CryptogramAutonomous extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
     private final Module[][] steps = new Module[][]{
-            {new DriveTime().setSpeeds(0.3, 0, 0).setTime(600)},// TODO: 1/25/2018 Get a Straight program working.
+         {new Cryptograms()},
+          //  {new EncoderDrive().setDistances(12,12).setSpeed(0.3)},
+            {new DriveTime().setSpeeds(.5,0,0).setTime(1000), new DriveTime().setSpeeds(.5,0,0).setTime(1000), new DriveTime().setSpeeds(.5,0,0).setTime(1000)},
+            {new Wait().setWaitTime(1000)},
+            {new DriveTime().setSpeeds(0,0,0.6).setTime(600), new DriveTime().setSpeeds(0,0,0.6).setTime(800), new DriveTime().setSpeeds(0,0,0.6).setTime(1000)},//the three possible positions for the cryptobox
+            {new DriveTime().setSpeeds(0.5,0,0).setTime(200)},// TODO: 1/25/2018 Download and test.
+            //{new EncoderDrive().setSpeed(Constants.DEFAULT_SPEED).setDistances(6,6)},
             {new Wait()},
     };
 
