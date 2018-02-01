@@ -82,6 +82,7 @@ public class JewelPusher extends SubSystem {
         }
     }
 
+    // TODO: 1/31/2018 Change so there is a dead zone for hue
     public Direction whereToHit(Direction currentlyReading, Team team) {
         Color.RGBToHSV((color.red() * 255) / 800, (color.green() * 255) / 800, (color.blue() * 255) / 800, colorValues);
         /* is true if the color sensor is less than 60 hue or greater than 300 then it is probably red,

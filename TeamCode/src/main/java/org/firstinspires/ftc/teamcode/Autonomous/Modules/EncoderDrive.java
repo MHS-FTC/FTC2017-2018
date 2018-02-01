@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.Autonomous.Modules;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.FTC_API.Examples.Drive;
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
@@ -55,6 +54,14 @@ public class EncoderDrive extends Module {
         //sets targets
         leftTarget = (int) (leftRotations * drive.getMotorType().getTicksPerRev());
         rightTarget = (int) (rightRotations * drive.getMotorType().getTicksPerRev());
+
+        //Note we use absolute value so if they already reversed them we don' have to worry
+        if (leftTarget < 0) {
+            leftSpeed = -(Math.abs(leftSpeed));//turn left speed negative if the left wheel is moving backwards
+        }
+        if (rightTarget < 0) {
+            rightSpeed = -(Math.abs(rightSpeed));//turn right speed negative if the left wheel is moving backwards
+        }
 
         drive.resetAllEncoders();
         drive.setLeftSideTarget(leftTarget);
