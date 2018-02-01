@@ -36,9 +36,9 @@ public class MainTeleop extends OpMode {
 
         //control forklift from controller 1
         if (gamepad1.dpad_up || gamepad2.dpad_up) {
-            robot.forklift.raise(0.6);
+            robot.forklift.raise(0.8);
         } else if (gamepad1.dpad_down || gamepad2.dpad_down) {
-            robot.forklift.raise(-0.6);
+            robot.forklift.raise(-0.8);
         } else {
             robot.forklift.raise(0);
         }
