@@ -118,6 +118,7 @@ public class EncoderDrive extends Module {
 
     @Override
     public int stop() {
+        drive.runUsingAllEncoders();
         //just pass through the position, this allows for "multithreaded" things that can be called
         return positionInArray;
     }
