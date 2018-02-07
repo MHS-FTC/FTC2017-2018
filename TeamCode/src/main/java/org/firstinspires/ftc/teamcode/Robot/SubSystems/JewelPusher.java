@@ -50,7 +50,7 @@ public class JewelPusher extends SubSystem {
     }
 
     public void dropArm() {
-        hitter.setPosition(0.85);
+        hitter.setPosition(0.9);
     }
 
     public void liftArm() {
