@@ -18,6 +18,8 @@ public class JewelHitter extends Module {
     private Team team = Team.RED_TEAM;//by default is red team, ALWAYS override
     private boolean hasHit = false;
 
+    private String debug;
+
     @Override
     public void start() {
         jewel = (JewelPusher) robot.getSubSystem(JewelPusher.ID);
@@ -48,12 +50,25 @@ public class JewelHitter extends Module {
             if (!hasHit) {
                 //detect and hit based on color sensor
                 jewel.turnOnLED();
+                debug = jewel.colorSensorReadable();
                 Direction hit = jewel.whereToHit(Direction.RIGHT, team);
                 jewel.hit(hit);//hit the right jewel
                 jewel.turnOffLED();
                 hasHit = true;//the servo should have hit, only run once
             }
         }
+
+        if (hasTelemetry()) {
+            telemetry.addLine(jewel.colorSensorReadable());
+        }
+    }
+
+    @Override
+    public int stop() {
+        if (hasTelemetry()) {
+            telemetry.log().add(debug);
+        }
+        return positionInArray;
     }
 
     public JewelHitter setTeam(Team team) {

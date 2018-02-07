@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.FTC_API.Autonomous;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.FTC_API.Robot.RobotBase;
 
@@ -12,6 +13,7 @@ import org.firstinspires.ftc.teamcode.FTC_API.Robot.RobotBase;
 
 public class AutonomousBase {
     public RobotBase robot;
+    private Telemetry telemetry = null;
     private Module[][] steps;
     private int currentStep = 0;//zero indexed
     private int currentPosition = 0;
@@ -68,7 +70,7 @@ public class AutonomousBase {
             //old way of doing things
             Module current = steps[currentStep][currentPosition];// loads current running module
             if (isFirstLoop) {
-                current.init(robot, 0);
+                current.init(robot, 0, telemetry);
                 current.start();
                 isFirstLoop = false;
             }
@@ -87,7 +89,7 @@ public class AutonomousBase {
                 }
                 if (currentStep <= (totalSteps - 1)) {//insures we have not gone through all our steps
                     current = steps[currentStep][position];
-                    current.init(robot, currentPosition);//initialize it with the passed through position so it can be passed through multiple times
+                    current.init(robot, currentPosition, telemetry);//initialize it with the passed through position so it can be passed through multiple times
                     current.start();
                 } else {
                     isDone = true;
@@ -99,6 +101,11 @@ public class AutonomousBase {
 
     public RobotBase getRobot() {
         return robot;
+    }
+
+    public AutonomousBase setTelemetry(Telemetry telemetry) {
+        this.telemetry = telemetry;
+        return this;
     }
 
 }

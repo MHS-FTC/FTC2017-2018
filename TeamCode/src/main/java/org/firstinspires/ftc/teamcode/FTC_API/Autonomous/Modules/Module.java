@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
 import org.firstinspires.ftc.teamcode.FTC_API.Robot.RobotBase;
 
@@ -13,13 +14,16 @@ public abstract class Module {
     protected RobotBase robot;
     protected int positionInArray;
 
+    protected Telemetry telemetry;
+
     /**
      * @param robot           the robot to reference
      * @param positionInArray where this module was stored in array (position 0, position 1, position 2, etc.)
      */
-    public void init(RobotBase robot, final int positionInArray) {
+    public void init(RobotBase robot, final int positionInArray, Telemetry telemetry) {
         this.robot = robot;
         this.positionInArray = positionInArray;
+        this.telemetry = telemetry;
     }
 
     abstract public void start();
@@ -36,6 +40,10 @@ public abstract class Module {
 
     public String ID() {
         return options().getName();
+    }
+
+    protected boolean hasTelemetry() {
+        return telemetry != null;
     }
 
     abstract public boolean isDone();
