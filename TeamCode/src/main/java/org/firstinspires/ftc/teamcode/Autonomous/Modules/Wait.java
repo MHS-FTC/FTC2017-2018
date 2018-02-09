@@ -28,6 +28,11 @@ public class Wait extends Module {
     }
 
     @Override
+    public int stop() {
+        return positionInArray;//return default position in array
+    }
+
+    @Override
     public Options options() {
         return new Options("Wait");
     }

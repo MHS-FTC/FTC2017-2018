@@ -81,7 +81,7 @@ public class EncoderDrive extends Module {
         if (hasTelemetry()) {
             telemetry.log().add("Right Target:" + rightTarget + " Left Target:" + leftTarget);
             telemetry.log().add("Right Rotations:" + rightRotations + " Left Rotations:" + leftRotations);
-            telemetry.log().add("Position in Array:" + positionInArray);
+            //telemetry.log().add("Position in Array:" + positionInArray);
         }
     }
 
