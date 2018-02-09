@@ -36,8 +36,8 @@ public class EverythingBlue extends OpMode {
     @Override
     public void init() {
         robot = new Robot();
-        auto.init(hardwareMap, robot, modules);
         auto.setTelemetry(telemetry);
+        auto.init(hardwareMap, robot, modules);
     }
 
     @Override

@@ -50,8 +50,8 @@ public class JewelHitter extends Module {
             if (!hasHit) {
                 //detect and hit based on color sensor
                 jewel.turnOnLED();
-                debug = jewel.colorSensorReadable();
                 Direction hit = jewel.whereToHit(Direction.LEFT, team);
+                debug = jewel.colorSensorReadable();
                 jewel.hit(hit);//hit the right jewel
                 jewel.turnOffLED();
                 hasHit = true;//the servo should have hit, only run once

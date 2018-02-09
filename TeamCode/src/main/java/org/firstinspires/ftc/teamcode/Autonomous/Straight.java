@@ -19,13 +19,14 @@ public class Straight extends OpMode {
     private Robot bot;
     private final Module[][] steps = new Module[][]{
             {new EncoderDrive().setSpeed(0.3).setDistances(33, 33)},
-            {new EncoderDrive().setSpeed(0.3).setDistances(-12, -12)},
+            {new EncoderDrive().setSpeed(0.4).setDistances(-12, -12)},
             {new Wait()},
     };
 
     @Override
     public void init() {
         bot = new Robot();
+        auto.setTelemetry(telemetry);
         auto.init(hardwareMap, bot, steps);
     }
 
@@ -34,5 +35,6 @@ public class Straight extends OpMode {
         auto.loop();
 
         telemetry.addData("Test", bot.drive.isFunctioning());//Add telemetry
+        telemetry.addLine("" + bot.drive.getLeftSideMotors()[0].getCurrentPosition());
     }
 }
