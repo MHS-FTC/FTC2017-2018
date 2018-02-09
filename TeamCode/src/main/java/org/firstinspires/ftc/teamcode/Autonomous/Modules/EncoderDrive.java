@@ -77,6 +77,11 @@ public class EncoderDrive extends Module {
         }
 
         drive.driveTank(leftSpeed, rightSpeed);
+
+        if (hasTelemetry()) {
+            telemetry.log().add("Right Target:" + rightTarget + " Left Target:" + leftTarget);
+            telemetry.log().add("Right Rotations:" + rightRotations + " Left Rotations:" + leftRotations);
+        }
     }
 
     @Override
@@ -97,9 +102,11 @@ public class EncoderDrive extends Module {
 
         if (isDoneAtPosition(currentLeft / motorsLeft, leftTarget)) {
             drive.stopLeftMotors();
+            leftSpeed = 0;
         }
         if (isDoneAtPosition(currentRight / motorsRight, rightTarget)) {
             drive.stopRightMotors();
+            rightSpeed = 0;
         }
         if (leftSpeed == 0 && rightSpeed == 0) {
             isDone = true;
