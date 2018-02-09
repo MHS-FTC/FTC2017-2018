@@ -24,7 +24,7 @@ public class CryptogramAutoEncoder extends OpMode {
     private Robot bot;
     private final Module[][] steps = new Module[][]{
             {new Cryptograms()},
-            {new EncoderDrive().setDistances(24,24).setSpeed(0.3)},
+            {new EncoderDrive().setDistances(24,24).setSpeed(0.4)},
             {new Wait().setWaitTime(1000)},
             {
                     new DriveTime().setSpeeds(0,0,0.6).setTime(600),
@@ -38,6 +38,7 @@ public class CryptogramAutoEncoder extends OpMode {
     @Override
     public void init() {
         bot = new Robot();
+        auto.setTelemetry(telemetry);
         auto.init(hardwareMap, bot, steps);
     }
 
