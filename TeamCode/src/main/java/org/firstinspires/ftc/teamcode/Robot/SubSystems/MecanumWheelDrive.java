@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.configuration.MotorConfigurationType;
-
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
 import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.DriveSystemTemplate;
 
@@ -22,7 +21,7 @@ public class MecanumWheelDrive extends DriveSystemTemplate {
     protected DcMotor leftBackMotor;
     protected DcMotor rightBackMotor;
 
-    public static final String ID = "TwoWheelDrive";
+    public static final String ID = "MecanumWheelDrive";
 
     @Override
     public boolean init(HardwareMap hardwareDevices) {
@@ -33,6 +32,8 @@ public class MecanumWheelDrive extends DriveSystemTemplate {
 
         leftFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         leftBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        runUsingAllEncoders();//use encoders to give more precise speed
         return true;
     }
 
