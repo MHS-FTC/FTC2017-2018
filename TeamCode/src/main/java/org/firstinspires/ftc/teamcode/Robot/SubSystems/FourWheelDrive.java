@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.configuration.MotorConfigurationType;
-
 import org.firstinspires.ftc.teamcode.FTC_API.Options;
 import org.firstinspires.ftc.teamcode.FTC_API.Robot.SubSystems.DriveSystemTemplate;
 
@@ -22,7 +21,7 @@ public class FourWheelDrive extends DriveSystemTemplate {
     protected DcMotor leftBackMotor;
     protected DcMotor rightBackMotor;
 
-    public static final String ID = "TwoWheelDrive";
+    public static final String ID = "FourWheelDrive";
 
     @Override
     public boolean init(HardwareMap hardwareDevices) {
