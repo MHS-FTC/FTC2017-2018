@@ -43,7 +43,7 @@ public class MainTeleop extends OpMode {
             robot.forklift.raise(0);
         }
 
-        robot.relicGrabber.extendClaw(-gamepad2.left_stick_y);//extend the claw out based on left joystick. This sets speed
+        robot.relicGrabber.extendClaw(-Range.scale(-gamepad2.left_stick_y, -1, 1, -0.75, 0.75));//extend the claw out based on left joystick. This sets speed
 
         relicClawPosition += Range.scale(-gamepad2.right_stick_y, -1, 1, -0.05, 0.05);//scales the joystick to something reasonable for controlling the joystick.
 
