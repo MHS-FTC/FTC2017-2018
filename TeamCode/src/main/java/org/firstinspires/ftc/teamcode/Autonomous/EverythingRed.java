@@ -2,26 +2,29 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import org.firstinspires.ftc.teamcode.Autonomous.Modules.*;
+
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.Cryptograms;
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.EncoderDrive;
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.JewelHitter;
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.CallFunction;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
-import org.firstinspires.ftc.teamcode.Utilitys.Constants;
 import org.firstinspires.ftc.teamcode.Utilitys.Team;
 
 /**
- * Created by ethan.hampton on 2/1/2018.
- * <p>
- * Does everything blue
+ * Created by byron.nice on 2/9/2018.
  */
-@Autonomous(name = "BLUE: Everything", group = "production")
-public class EverythingBlue extends OpMode {
+
+@Autonomous(name = "Red: Everything", group = "production")
+public class EverythingRed extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot robot;
 
     private Module[][] modules = {
-            {new JewelHitter().setTeam(Team.BLUE_TEAM)},
+            {new JewelHitter().setTeam(Team.RED_TEAM)},
             {new Cryptograms()}, //Decrypts Cryptogram
             {new CallFunction().setFunction(()-> robot.forklift.close())}, //Close claws
             {new Wait().setWaitTime(300)},//Wait
