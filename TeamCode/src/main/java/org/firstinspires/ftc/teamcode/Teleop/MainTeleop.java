@@ -17,7 +17,7 @@ import org.firstinspires.ftc.teamcode.Utilitys.Direction;
 public class MainTeleop extends OpMode {
     private Robot robot = new Robot();
 
-    private double relicClawPosition;//stores the position of the relic claw
+    private double relicClawPosition = 0.1;//stores the position of the relic claw
 
     @Override
     public void init() {
@@ -43,7 +43,7 @@ public class MainTeleop extends OpMode {
             robot.forklift.raise(0);
         }
 
-        robot.relicGrabber.extendClaw(-Range.scale(-gamepad2.left_stick_y, -1, 1, -0.75, 0.75));//extend the claw out based on left joystick. This sets speed
+        robot.relicGrabber.extendClaw(-Range.scale(-gamepad2.left_stick_y, -1, 1, -0.55, 0.85));//extend the claw out based on left joystick. This sets speed
 
         relicClawPosition += Range.scale(-gamepad2.right_stick_y, -1, 1, -0.05, 0.05);//scales the joystick to something reasonable for controlling the joystick.
 
@@ -52,14 +52,13 @@ public class MainTeleop extends OpMode {
         if (relicClawPosition > 0.95) {
             relicClawPosition = 0.9;
         }
-        if (relicClawPosition < 0.05) {
-            relicClawPosition = 0.05;
+        if (relicClawPosition < 0.02) {
+            relicClawPosition = 0.02;
         }
 
         // TODO: 1/5/2018 Make this follow a square(?) scale for more precision
         robot.relicGrabber.setClawPosition(relicClawPosition);//sets the actual claw position
 
-        // TODO: 1/8/2018 Set so position is relative to straight up and down
         robot.relicGrabber.rotate(1 - gamepad2.left_trigger);//Rotates the claw so it begins down and goes from there
 
 
