@@ -26,7 +26,8 @@ public class RelicGrabber extends SubSystem {
         extender = hardwareDevices.dcMotor.get(options.get("extender"));
         claw = hardwareDevices.servo.get(options.get("claw"));
         rotate = hardwareDevices.servo.get(options.get("rotate"));
-        // TODO: 1/25/2018 Implement initial servo positions
+        setClawPosition(0.1);
+        rotate(0.9);
         return true;
     }
 
