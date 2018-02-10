@@ -17,7 +17,8 @@ import org.firstinspires.ftc.teamcode.Utilitys.Direction;
 public class MainTeleop extends OpMode {
     private Robot robot = new Robot();
 
-    private double relicClawPosition = 0.1;//stores the position of the relic claw
+    private double relicClawPosition = 0.07;//stores the position of the relic claw
+    private double relicClawRotation = 1;//1 is the downward position
 
     @Override
     public void init() {
@@ -43,7 +44,14 @@ public class MainTeleop extends OpMode {
             robot.forklift.raise(0);
         }
 
-        robot.relicGrabber.extendClaw(-Range.scale(-gamepad2.left_stick_y, -1, 1, -0.55, 0.85));//extend the claw out based on left joystick. This sets speed
+
+        double extendInput = -gamepad2.left_stick_y;
+        //robot.relicGrabber.extendClaw(Range.scale(extendInput, -1, 1, -0.85, 0.85));//extend the claw out based on left joystick. This sets speed
+        if (extendInput >= 0) {//should extend
+            robot.relicGrabber.extendClaw(Range.scale(extendInput, 0, 1, 0, 0.85));//extend the claw
+        } else {//must be less than zero, should retract
+            robot.relicGrabber.extendClaw(Range.scale(extendInput, -1, 0, -0.55, 0));//extend the claw
+        }
 
         relicClawPosition += Range.scale(-gamepad2.right_stick_y, -1, 1, -0.05, 0.05);//scales the joystick to something reasonable for controlling the joystick.
 
@@ -55,15 +63,27 @@ public class MainTeleop extends OpMode {
         if (relicClawPosition < 0.02) {
             relicClawPosition = 0.02;
         }
-
         // TODO: 1/5/2018 Make this follow a square(?) scale for more precision
         robot.relicGrabber.setClawPosition(relicClawPosition);//sets the actual claw position
 
-        robot.relicGrabber.rotate(1 - gamepad2.left_trigger);//Rotates the claw so it begins down and goes from there
+        if (gamepad2.left_bumper) {//up
+            relicClawRotation -= 0.007;
+        }
+        if (gamepad2.right_bumper) {//down
+            relicClawRotation += 0.007;
+        }
+        //clip the rotation of the claw
+        if (relicClawRotation > 1) {
+            relicClawRotation = 1;
+        }
+        if (relicClawRotation < 0.02) {
+            relicClawRotation = 0.02;
+        }
+        robot.relicGrabber.rotate(relicClawRotation);//Rotates the claw so it begins down and goes from there
 
 
         //control claws for forklift from both controllers
-        if (gamepad1.right_bumper || gamepad1.left_bumper || gamepad2.right_bumper || gamepad2.left_bumper) {
+        if (gamepad1.right_bumper || gamepad1.left_bumper) {
             robot.forklift.open();
         } else {
             robot.forklift.close();
