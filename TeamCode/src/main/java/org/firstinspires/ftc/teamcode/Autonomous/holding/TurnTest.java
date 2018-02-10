@@ -1,13 +1,11 @@
-package org.firstinspires.ftc.teamcode.Autonomous;
+package org.firstinspires.ftc.teamcode.Autonomous.holding;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
-import org.firstinspires.ftc.teamcode.Autonomous.Modules.EncoderDrive;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
-import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.CallFunction;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
 
@@ -17,6 +15,7 @@ import org.firstinspires.ftc.teamcode.Robot.Robot;
  */
 
 @Autonomous(name = "Turn Test", group = "production")
+@Disabled
 public class TurnTest extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;

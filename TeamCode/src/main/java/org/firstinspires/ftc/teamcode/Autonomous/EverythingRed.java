@@ -2,12 +2,7 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-
-import org.firstinspires.ftc.teamcode.Autonomous.Modules.Cryptograms;
-import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
-import org.firstinspires.ftc.teamcode.Autonomous.Modules.EncoderDrive;
-import org.firstinspires.ftc.teamcode.Autonomous.Modules.JewelHitter;
-import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.*;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.CallFunction;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
@@ -16,9 +11,11 @@ import org.firstinspires.ftc.teamcode.Utilitys.Team;
 
 /**
  * Created by byron.nice on 2/9/2018.
+ *
+ * does everything for red
  */
 
-@Autonomous(name = "Red: Everything", group = "production")
+@Autonomous(name = "RED: Everything", group = "Red")
 public class EverythingRed extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot robot;

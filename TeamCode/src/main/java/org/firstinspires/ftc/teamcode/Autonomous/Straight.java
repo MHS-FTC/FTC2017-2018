@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.Robot.Robot;
  * Straight autonomous that simply drives straight and parks
  */
 
-@Autonomous(name = "ALL: Straight", group = "production")
+@Autonomous(name = "ALL: Straight", group = "All")
 public class Straight extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;

@@ -2,7 +2,6 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.Cryptograms;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
@@ -12,14 +11,13 @@ import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.CallFunction;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
-import org.firstinspires.ftc.teamcode.Utilitys.Constants;
 
 /**
  * Created by byron.nice on 2/5/2018.
  * Straight autonomous that simply drives straight and parks
  */
 
-@Autonomous(name = "CryptogramRed", group = "testing")
+@Autonomous(name = "RED: Cryptogram", group = "Red")
 public class CryptogramRed extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;

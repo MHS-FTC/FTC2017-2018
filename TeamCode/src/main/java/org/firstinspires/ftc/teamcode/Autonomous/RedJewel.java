@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.Utilitys.Team;
  * Straight autonomous that simply drives straight and parks
  */
 
-@Autonomous(name = "RED: Jewels", group = "production")
+@Autonomous(name = "RED: Jewels", group = "Red")
 public class RedJewel extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
