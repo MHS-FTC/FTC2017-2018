@@ -27,7 +27,7 @@ public class RelicGrabber extends SubSystem {
         claw = hardwareDevices.servo.get(options.get("claw"));
         rotate = hardwareDevices.servo.get(options.get("rotate"));
         setClawPosition(0.1);
-        rotate(0.9);
+        rotate(0.99);
         return true;
     }
 

@@ -28,14 +28,16 @@ public class CryptogramRed extends OpMode {
             {new CallFunction().setFunction(()-> bot.forklift.raise(0.4))}, //Raise Forklift
             {new Wait().setWaitTime(500)},//Wait
             {new CallFunction().setFunction(()-> bot.forklift.raise(0.0))},//Stop Forklift
-            {new EncoderDrive().setDistances(24,24).setSpeed(0.4)},//Moves forward
-            {new Wait().setWaitTime(1000)},//Waits
+            {new Wait().setWaitTime(300)},//Wait
+            {new DriveTime().setSpeeds(-0.4,0,0).setTime(2500)},
+            {new DriveTime().setSpeeds(0,0.5,0).setTime(2800)},
+            {new Wait().setWaitTime(500)},//Waits
             {
-                    new DriveTime().setSpeeds(0,0,0.6).setTime(550),
-                    new DriveTime().setSpeeds(0,0,0.6).setTime(950),
-                    new DriveTime().setSpeeds(0,0,0.6).setTime(1400),
+                    new DriveTime().setSpeeds(0,0,-0.6).setTime(1400),
+                    new DriveTime().setSpeeds(0,0,-0.6).setTime(950),
+                    new DriveTime().setSpeeds(0,0,-0.6).setTime(550),
             },//the three possible positions for the cryptobox
-            {new EncoderDrive().setDistances(9,9).setSpeed(0.3)},//Move Forward
+            {new EncoderDrive().setDistances(5,5).setSpeed(0.3)},//Move Forward
             {new CallFunction().setFunction(() -> bot.forklift.open())}, //Open claws
             {new Wait().setWaitTime(300)},//wait to open before continuing back
             {new DriveTime().setSpeeds(-0.2,0,0).setTime(600)},//Moves back
