@@ -2,11 +2,11 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.EncoderDrive;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
+import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.CallFunction;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
 
@@ -20,8 +20,15 @@ public class StraightBack extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
     private final Module[][] steps = new Module[][]{
+            {new CallFunction().setFunction(() -> bot.forklift.close())}, //Close claws
+            {new CallFunction().setFunction(() -> bot.forklift.raise(0.4))}, //Raise Forklift
+            {new Wait().setWaitTime(100)},
+            {new CallFunction().setFunction(() -> bot.forklift.raise(0.0))}, //Stop Forklift
+
             {new EncoderDrive().setSpeed(0.3).setDistances(33, 33)},
-            {new DriveTime().setSpeeds(-0.3,0,0).setTime(300)},
+            {new CallFunction().setFunction(() -> bot.forklift.open())}, //Open claws
+            {new Wait().setWaitTime(300)},//wait to open before continuing back
+            {new DriveTime().setSpeeds(-0.3, 0, 0).setTime(300)},
             {new Wait()},
     };
 

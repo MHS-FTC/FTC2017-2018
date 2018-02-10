@@ -19,7 +19,6 @@ public class Straight extends OpMode {
     private Robot bot;
     private final Module[][] steps = new Module[][]{
             {new EncoderDrive().setSpeed(0.3).setDistances(33, 33)},
-            {new EncoderDrive().setSpeed(0.4).setDistances(-12, -12)},
             {new Wait()},
     };
 
