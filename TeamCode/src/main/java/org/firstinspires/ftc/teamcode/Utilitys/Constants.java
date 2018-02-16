@@ -25,4 +25,7 @@ public class Constants {
     public static final double JEWEL_LEFT = 0.38;
     public static final double JEWEL_MIDDLE = 0.48;
     public static final double JEWEL_RIGHT = 0.6;
+
+    public static final int TURN_90_DEGREES = 17;
+    public static final int TURN_180_DEGREES = TURN_90_DEGREES * 2;
 }

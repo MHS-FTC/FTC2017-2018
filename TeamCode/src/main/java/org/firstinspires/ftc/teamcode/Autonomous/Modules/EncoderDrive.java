@@ -164,6 +164,10 @@ public class EncoderDrive extends Module {
     }
 
     private boolean isDoneAtPosition(double current, double target) {
-        return current + 15 >= target || current - 15 >= target;
+        if (target >= 0) {//target is positive
+            return current + 15 >= target || current - 15 >= target;
+        } else {//otherwise it must be negative and should be treated as such
+            return !(target < 0) || current + 15 <= target || current - 15 <= target;
+        }
     }
 }

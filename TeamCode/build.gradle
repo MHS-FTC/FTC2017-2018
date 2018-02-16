@@ -11,11 +11,15 @@
 // Include common definitions from above.
 apply from: '../build.common.gradle'
 android {
+    signingConfigs {
+    }
     buildToolsVersion '26.0.2'
     compileSdkVersion 23
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
     }
 }
 dependencies {
