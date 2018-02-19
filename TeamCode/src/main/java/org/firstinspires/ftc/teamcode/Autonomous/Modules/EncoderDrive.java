@@ -109,6 +109,7 @@ public class EncoderDrive extends Module {
             drive.stopRightMotors();
             rightSpeed = 0;
         }
+
         if (leftSpeed == 0 && rightSpeed == 0) {
             isDone = true;
         }
