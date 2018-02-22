@@ -50,22 +50,6 @@ public class DriveTime extends Module {
     }
 
     @Override
-    public int stop() {
-        //just pass through the position, this allows for "multithreaded" things that can be called
-        return positionInArray;
-    }
-
-    /**
-     * Resets the position in array number so you can changing it in the next step
-     *
-     * @return this object for building
-     */
-    public DriveTime resetPositionInArray() {
-        positionInArray = 0;
-        return this;
-    }
-
-    @Override
     public String[] requiredSubSystems() {
         return new String[]{Drive.ID};
     }

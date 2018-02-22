@@ -13,6 +13,7 @@ import org.firstinspires.ftc.teamcode.FTC_API.Robot.RobotBase;
 public abstract class Module {
     protected RobotBase robot;
     protected int positionInArray;
+    private int internalPositionInArray;//used internally, should only be used by this class to pass though array position by default
 
     protected Telemetry telemetry;
 
@@ -23,6 +24,7 @@ public abstract class Module {
     public void init(RobotBase robot, final int positionInArray, Telemetry telemetry) {
         this.robot = robot;
         this.positionInArray = positionInArray;
+        internalPositionInArray = positionInArray;//set internal
         this.telemetry = telemetry;
     }
 
@@ -33,7 +35,29 @@ public abstract class Module {
     //NOTE: This expects an int between 0 and the number of possible next steps - 1
     //This ideally should not rely on constants however there really is no way around this
     public int stop() {
-        return 0;
+        return internalPositionInArray;//return default position in array, unless it has been overridden by resetPositionInArray()
+    }
+
+    /**
+     * Call this LAST in constructor chain else you won't have access to module specific functions
+     * Used to reset the next running position in array to 0
+     *
+     * @return object for building
+     */
+    public Module resetArrayPosition() {
+        internalPositionInArray = 0;
+        return this;
+    }
+
+    /**
+     * Call this LAST in constructor chain else you won't have access to module specific functions
+     * Used to set next running position in array
+     *
+     * @return object for building
+     */
+    public Module setArrayPosition(int position) {
+        internalPositionInArray = position;
+        return this;
     }
 
     abstract public Options options();
