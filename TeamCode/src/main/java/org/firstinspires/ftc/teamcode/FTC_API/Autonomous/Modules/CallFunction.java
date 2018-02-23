@@ -34,21 +34,6 @@ public class CallFunction extends Module {
     }
 
     @Override
-    public int stop() {
-        return positionInArray;//return default position in array, unless it has been overridden by resetPositionInArray()
-    }
-
-    /**
-     * Used to reset the position to 0 in an array
-     *
-     * @return object for building
-     */
-    public CallFunction resetArrayPosition() {
-        positionInArray = 0;
-        return this;
-    }
-
-    @Override
     public Options options() {
         return options;
     }

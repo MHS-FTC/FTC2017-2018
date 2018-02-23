@@ -24,13 +24,7 @@ public class Wait extends Module {
 
     @Override
     public void tick() {
-
-    }
-
-    @Override
-    public int stop() {
-        return positionInArray;//return default position in array
-    }
+    }//Just here because it is required
 
     @Override
     public Options options() {
