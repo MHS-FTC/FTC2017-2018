@@ -48,7 +48,7 @@ public class MainTeleop extends OpMode {
 
 
         double extendInput = -gamepad2.left_stick_y;
-        robot.relicGrabber.extendClaw(MathUtils.scaleThoughZero(extendInput, 0, 1, -0.55, 0.85));
+        robot.relicGrabber.extendClaw(MathUtils.scaleThoughZero(extendInput, -1, 1, -0.55, 0.85));
         /*
         //robot.relicGrabber.extendClaw(Range.scale(extendInput, -1, 1, -0.85, 0.85));//extend the claw out based on left joystick. This sets speed
         if (extendInput >= 0) {//should extend

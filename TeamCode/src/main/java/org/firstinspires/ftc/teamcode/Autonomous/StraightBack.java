@@ -29,7 +29,7 @@ public class StraightBack extends OpMode {
             {new EncoderDrive().setSpeed(0.3).setDistances(33, 33)},//Move Forward
             {new CallFunction().setFunction(() -> bot.forklift.open())}, //Open claws
             {new Wait().setWaitTime(300)},//wait to open before continuing back
-            {new DriveTime().setSpeeds(-0.3, 0, 0).setTime(300)},//Move Back
+            {new EncoderDrive().setSpeed(0.3).setDistances(-3, -3)},//Move Forward
             {new Wait()},
     };
 

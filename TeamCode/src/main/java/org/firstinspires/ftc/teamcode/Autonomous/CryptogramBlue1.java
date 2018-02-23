@@ -13,12 +13,12 @@ import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
 
 /**
- * Created by byron.nice on 2/5/2018.
- * Straight autonomous that simply drives straight and parks
+ * Created by byron.nice on 2/19/2018.
+ * Does Red1 Cryptogram
  */
 
-@Autonomous(name = "RED: Cryptogram", group = "Red")
-public class CryptogramRed extends OpMode {
+@Autonomous(name = "BLUE1: Cryptogram", group = "Blue")
+public class CryptogramBlue1 extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
     private final Module[][] steps = new Module[][]{
@@ -28,19 +28,18 @@ public class CryptogramRed extends OpMode {
             {new CallFunction().setFunction(()-> bot.forklift.raise(0.4))}, //Raise Forklift
             {new Wait().setWaitTime(500)},//Wait
             {new CallFunction().setFunction(()-> bot.forklift.raise(0.0))},//Stop Forklift
-            {new Wait().setWaitTime(300)},//Wait
-            {new DriveTime().setSpeeds(-0.4,0,0).setTime(2500)},
-            {new DriveTime().setSpeeds(0,0.5,0).setTime(2800)},
             {new Wait().setWaitTime(500)},//Waits
             {
-                    new DriveTime().setSpeeds(0,0,-0.6).setTime(1400),
-                    new DriveTime().setSpeeds(0,0,-0.6).setTime(950),
-                    new DriveTime().setSpeeds(0,0,-0.6).setTime(550),
+                    new EncoderDrive().setDistances(26,26).setSpeed(0.5),//LEFT 26
+                    new EncoderDrive().setDistances(33,33).setSpeed(0.5),//Center
+                    new EncoderDrive().setDistances(41,41).setSpeed(0.5),//Right
             },//the three possible positions for the cryptobox
-            {new EncoderDrive().setDistances(5,5).setSpeed(0.3)},//Move Forward
+            {new EncoderDrive().setDistances(-17,17).setSpeed(0.3)},
+            {new Wait().setWaitTime(300)},
+            {new EncoderDrive().setDistances(10,10).setSpeed(0.3)},//Move Forward
             {new CallFunction().setFunction(() -> bot.forklift.open())}, //Open claws
             {new Wait().setWaitTime(300)},//wait to open before continuing back
-            {new DriveTime().setSpeeds(-0.2,0,0).setTime(600)},//Moves back
+            {new EncoderDrive().setDistances(-5,-5).setSpeed(0.3)},
             {new Wait()},
     };
 
