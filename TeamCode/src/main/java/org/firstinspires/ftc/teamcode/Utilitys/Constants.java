@@ -9,6 +9,7 @@ package org.firstinspires.ftc.teamcode.Utilitys;
 public class Constants {
     public static final double FORKLIFT_CLOSE_POSITION = 0.3;
     public static final double FORKLIFT_OPEN_POSITION = 0.1;
+    public static final double FORKLIFT_HALF_OPEN_POSITION = FORKLIFT_OPEN_POSITION + ((FORKLIFT_CLOSE_POSITION - FORKLIFT_OPEN_POSITION) / 2);
 
     public static final double DEFAULT_SPEED = 0.75;//default speed for the robot
     public static final double WHEEL_CIRCUMFERENCE = 4 * Math.PI;
@@ -25,7 +26,7 @@ public class Constants {
     public static final double JEWEL_LEFT = 0.35;
     public static final double JEWEL_MIDDLE = 0.48;
     public static final double JEWEL_RIGHT = 0.63;
-    public static final double JEWEL_DOWN = 0.91;
+    public static final double JEWEL_DOWN = 0.99;
     public static final double JEWEL_UP = 0.01;
 
     public static final int TURN_90_DEGREES = 17;

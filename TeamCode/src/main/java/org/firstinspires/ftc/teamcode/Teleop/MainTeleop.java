@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
+import org.firstinspires.ftc.teamcode.Robot.SubSystems.Forklift;
 import org.firstinspires.ftc.teamcode.Utilitys.Direction;
 import org.firstinspires.ftc.teamcode.Utilitys.MathUtils;
 
@@ -26,6 +27,7 @@ public class MainTeleop extends OpMode {
     public void init() {
         robot.init(hardwareMap);
         robot.start();
+        //robot.jewel.rotate.setPosition(0.38);
     }
 
     @Override
@@ -39,16 +41,16 @@ public class MainTeleop extends OpMode {
 
         //control forklift from controller 1
         if (gamepad1.dpad_up || gamepad2.dpad_up) {
-            robot.forklift.raise(0.8);
+            robot.forklift.raise(0.9);
         } else if (gamepad1.dpad_down || gamepad2.dpad_down) {
-            robot.forklift.raise(-0.8);
+            robot.forklift.raise(-0.9);
         } else {
             robot.forklift.raise(0);
         }
 
 
         double extendInput = -gamepad2.left_stick_y;
-        robot.relicGrabber.extendClaw(MathUtils.scaleThoughZero(extendInput, -1, 1, -0.55, 0.85));
+        robot.relicGrabber.extendClaw(MathUtils.scaleThoughZero(extendInput, -1, 1, -0.70, 1));
         /*
         //robot.relicGrabber.extendClaw(Range.scale(extendInput, -1, 1, -0.85, 0.85));//extend the claw out based on left joystick. This sets speed
         if (extendInput >= 0) {//should extend
@@ -94,11 +96,13 @@ public class MainTeleop extends OpMode {
         robot.relicGrabber.rotate(relicClawRotation);//Rotates the claw so it begins down and goes from there
 
 
-        //control claws for forklift from both controllers
-        if (gamepad1.right_bumper || gamepad1.left_bumper) {
-            robot.forklift.open();
-        } else {
-            robot.forklift.close();
+        //controls both sets of claws with first controller
+        if (gamepad1.right_bumper) {
+            robot.forklift.setForkPosition(Direction.TOP, Forklift.Position.FULL_OPEN);
+        } else if (gamepad1.left_bumper) {
+            robot.forklift.setForkPosition(Direction.BOTTOM, Forklift.Position.FULL_OPEN);
+        } else if (gamepad1.b) {
+            robot.forklift.openHalfAll();
         }
 
 

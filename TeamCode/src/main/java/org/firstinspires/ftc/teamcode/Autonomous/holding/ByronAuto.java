@@ -21,7 +21,7 @@ public class ByronAuto extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
     private final Module[][] steps = new Module[][]{
-            {new CallFunction().setFunction(()-> bot.forklift.close())}, //Close claws
+            {new CallFunction().setFunction(() -> bot.forklift.closeAll())}, //Close claws
             {new CallFunction().setFunction(()-> bot.forklift.raise(0.4))}, //Raise Forklift
             {new Wait().setWaitTime(100)},
             {new CallFunction().setFunction(()-> bot.forklift.raise(0.0))}, //Stop Forklift
