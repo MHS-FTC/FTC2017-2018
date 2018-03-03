@@ -4,7 +4,6 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.Cryptograms;
-import org.firstinspires.ftc.teamcode.Autonomous.Modules.DriveTime;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.EncoderDrive;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
@@ -14,7 +13,7 @@ import org.firstinspires.ftc.teamcode.Robot.Robot;
 
 /**
  * Created by byron.nice on 2/5/2018.
- * Straight autonomous that simply drives straight and parks
+ * Grabs the glyph and places it in the correct column by deciphering the cryptogram for the red 2 stone.
  */
 
 @Autonomous(name = "RED2: Cryptogram", group = "Red")
@@ -23,24 +22,27 @@ public class CryptogramRed2 extends OpMode {
     private Robot bot;
     private final Module[][] steps = new Module[][]{
             {new Cryptograms()}, //Decrypts Cryptogram
-            {new CallFunction().setFunction(()-> bot.forklift.close())}, //Close claws
+            {new CallFunction().setFunction(() -> bot.forklift.closeAll())}, //Close claws
             {new Wait().setWaitTime(300)},//Wait
             {new CallFunction().setFunction(()-> bot.forklift.raise(0.4))}, //Raise Forklift
-            {new Wait().setWaitTime(500)},//Wait
+            {new Wait().setWaitTime(700)},//Wait
             {new CallFunction().setFunction(()-> bot.forklift.raise(0.0))},//Stop Forklift
-            {new Wait().setWaitTime(300)},//Wait
-            {new DriveTime().setSpeeds(-0.4,0,0).setTime(2500)},
-            {new DriveTime().setSpeeds(0,0.5,0).setTime(2800)},
             {new Wait().setWaitTime(500)},//Waits
+            {new EncoderDrive().setDistances(-26, -26).setSpeed(0.4)},
+            {new Wait().setWaitTime(300)},//Wait
+            {new EncoderDrive().setDistances(19, -19).setSpeed(0.4)},
+            {new Wait().setWaitTime(300)},//Wait
             {
-                    new DriveTime().setSpeeds(0,0,-0.6).setTime(1400),
-                    new DriveTime().setSpeeds(0,0,-0.6).setTime(950),
-                    new DriveTime().setSpeeds(0,0,-0.6).setTime(550),
+                    new EncoderDrive().setDistances(16.5, 16.5).setSpeed(0.4),//LEFT
+                    new EncoderDrive().setDistances(9.5, 9.5).setSpeed(0.4),//Center
+                    new EncoderDrive().setDistances(2.5, 2.5).setSpeed(0.4),//Right
             },//the three possible positions for the cryptobox
-            {new EncoderDrive().setDistances(5,5).setSpeed(0.3)},//Move Forward
-            {new CallFunction().setFunction(() -> bot.forklift.open())}, //Open claws
-            {new Wait().setWaitTime(300)},//wait to open before continuing back
-            {new DriveTime().setSpeeds(-0.2,0,0).setTime(600)},//Moves back
+            {new EncoderDrive().setDistances(19, -19).setSpeed(0.4)},
+            {new Wait().setWaitTime(300)},
+            {new EncoderDrive().setDistances(10, 10).setSpeed(0.4)},//Move Forward
+            {new CallFunction().setFunction(() -> bot.forklift.openAll())}, //Open claws
+            {new Wait().setWaitTime(300)},//wait to openAll before continuing back
+            {new EncoderDrive().setDistances(-5, -5).setSpeed(0.4)},
             {new Wait()},
     };
 

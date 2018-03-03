@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.Utilitys.Team;
 
 /**
  * Created by byron.nice on 2/5/2018.
- * Straight autonomous that simply drives straight and parks
+ * Does every autonomous challenge for the blue 2 stone.
  */
 
 @Autonomous(name = "BLUE2: Everything", group = "Blue")
@@ -22,22 +22,27 @@ public class EverythingBlue2 extends OpMode {
     private final Module[][] steps = new Module[][]{
             {new JewelHitter().setTeam(Team.BLUE_TEAM)},
             {new Cryptograms()}, //Decrypts Cryptogram
-            {new CallFunction().setFunction(() -> bot.forklift.close())}, //Close claws
+            {new CallFunction().setFunction(() -> bot.forklift.closeAll())}, //Close claws
             {new Wait().setWaitTime(300)},//Wait
             {new CallFunction().setFunction(() -> bot.forklift.raise(0.4))}, //Raise Forklift
-            {new Wait().setWaitTime(500)},//Wait
+            {new Wait().setWaitTime(700)},//Wait
             {new CallFunction().setFunction(() -> bot.forklift.raise(0.0))},//Stop Forklift
-            {new EncoderDrive().setDistances(24, 24).setSpeed(0.4)},//Moves forward
-            {new Wait().setWaitTime(1000)},//Waits
+            {new Wait().setWaitTime(500)},//Waits
+            {new EncoderDrive().setDistances(22, 22).setSpeed(0.4)},
+            {new Wait().setWaitTime(300)},//Wait
+            {new EncoderDrive().setDistances(19, -19).setSpeed(0.4)},
+            {new Wait().setWaitTime(300)},//Wait
             {
-                    new DriveTime().setSpeeds(0, 0, 0.6).setTime(550),
-                    new DriveTime().setSpeeds(0, 0, 0.6).setTime(950),
-                    new DriveTime().setSpeeds(0, 0, 0.6).setTime(1400),
+                    new EncoderDrive().setDistances(4.5, 4.5).setSpeed(0.4),//LEFT
+                    new EncoderDrive().setDistances(11.5, 11.5).setSpeed(0.4),//Center
+                    new EncoderDrive().setDistances(18.5, 18.5).setSpeed(0.4),//Right
             },//the three possible positions for the cryptobox
-            {new EncoderDrive().setDistances(9, 9).setSpeed(0.3)},//Move Forward
-            {new CallFunction().setFunction(() -> bot.forklift.open())}, //Open claws
-            {new Wait().setWaitTime(300)},//wait to open before continuing back
-            {new DriveTime().setSpeeds(-0.2, 0, 0).setTime(600)},//Moves back
+            {new EncoderDrive().setDistances(-17, 17).setSpeed(0.4)},
+            {new Wait().setWaitTime(300)},
+            {new EncoderDrive().setDistances(10, 10).setSpeed(0.4)},//Move Forward
+            {new CallFunction().setFunction(() -> bot.forklift.openAll())}, //Open claws
+            {new Wait().setWaitTime(300)},//wait to openAll before continuing back
+            {new EncoderDrive().setDistances(-5, -5).setSpeed(0.4)},
             {new Wait()},
     };
 

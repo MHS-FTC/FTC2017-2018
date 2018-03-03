@@ -25,7 +25,7 @@ public class BlueStraightJewel extends OpMode {
     private final Module[][] steps = new Module[][]{
             {new JewelHitter().setTeam(Team.BLUE_TEAM)},
 
-            {new CallFunction().setFunction(() -> bot.forklift.close())}, //Close claws
+            {new CallFunction().setFunction(() -> bot.forklift.closeAll())}, //Close claws
             {new Wait().setWaitTime(300)},//Wait
             {new CallFunction().setFunction(() -> bot.forklift.raise(0.4))}, //Raise Forklift
             {new Wait().setWaitTime(500)},//wait
@@ -33,8 +33,8 @@ public class BlueStraightJewel extends OpMode {
 
             {new EncoderDrive().setSpeed(0.30).setDistances(33, 33)}, //Move forward
 
-            {new CallFunction().setFunction(() -> bot.forklift.open())}, //Open claws
-            {new Wait().setWaitTime(300)},//wait to open before continuing back
+            {new CallFunction().setFunction(() -> bot.forklift.openAll())}, //Open claws
+            {new Wait().setWaitTime(300)},//wait to openAll before continuing back
             {new DriveTime().setSpeeds(-0.2, 0, 0).setTime(600)},//Moves back
 
             {new Wait()},

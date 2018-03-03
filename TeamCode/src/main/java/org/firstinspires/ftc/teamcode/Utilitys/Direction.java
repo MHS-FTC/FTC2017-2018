@@ -6,7 +6,7 @@ package org.firstinspires.ftc.teamcode.Utilitys;
  */
 
 public enum Direction {
-    LEFT, RIGHT, MIDDLE, UP, DOWN, FORWARD, BACKWARDS, UNKNOWN;
+    LEFT, RIGHT, MIDDLE, UP, DOWN, FORWARD, BACKWARDS, UNKNOWN, BOTTOM, TOP;
 
     public static Direction getOpposite(Direction currentlyPointing) {
         switch (currentlyPointing) {

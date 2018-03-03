@@ -3,39 +3,53 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.Cryptograms;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.EncoderDrive;
+import org.firstinspires.ftc.teamcode.Autonomous.Modules.JewelHitter;
 import org.firstinspires.ftc.teamcode.Autonomous.Modules.Wait;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.AutonomousBase;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.CallFunction;
 import org.firstinspires.ftc.teamcode.FTC_API.Autonomous.Modules.Module;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
+import org.firstinspires.ftc.teamcode.Utilitys.Team;
 
 /**
- * Created by ethan.hampton on 12/4/2017.
- * Straight autonomous that simply drives straight and parks
+ * Created by byron.nice on 2/23/2018.
+ * Does every autonomous challenge for the red 1 stone.
  */
 
-@Autonomous(name = "ALL: Straight AND BACK", group = "All")
-public class StraightBack extends OpMode {
+
+@Autonomous(name = "RED1: Everything", group = "Red")
+public class EverythingRed1 extends OpMode {
     private AutonomousBase auto = new AutonomousBase();
     private Robot bot;
     private final Module[][] steps = new Module[][]{
+            {new JewelHitter().setTeam(Team.RED_TEAM)},
+            {new Cryptograms()}, //Decrypts Cryptogram
             {new CallFunction().setFunction(() -> bot.forklift.closeAll())}, //Close claws
             {new Wait().setWaitTime(300)},//Wait
             {new CallFunction().setFunction(() -> bot.forklift.raise(0.4))}, //Raise Forklift
-            {new Wait().setWaitTime(500)},//Wait
-            {new CallFunction().setFunction(() -> bot.forklift.raise(0.0))}, //Stop Forklift
-            {new Wait().setWaitTime(300)},//Wait
-            {new EncoderDrive().setSpeed(0.3).setDistances(33, 33)},//Move Forward
+            {new Wait().setWaitTime(700)},//Wait
+            {new CallFunction().setFunction(() -> bot.forklift.raise(0.0))},//Stop Forklift
+            {new Wait().setWaitTime(500)},//Waits
+            {
+                    new EncoderDrive().setDistances(-45.5, -45.5).setSpeed(0.5),//LEFT
+                    new EncoderDrive().setDistances(-37.5, -37.5).setSpeed(0.5),//Center
+                    new EncoderDrive().setDistances(-29.5, -29.5).setSpeed(0.5),//Right
+            },//the three possible positions for the cryptobox
+            {new EncoderDrive().setDistances(-17, 17).setSpeed(0.3)},
+            {new Wait().setWaitTime(300)},
+            {new EncoderDrive().setDistances(10, 10).setSpeed(0.3)},//Move Forward
             {new CallFunction().setFunction(() -> bot.forklift.openAll())}, //Open claws
             {new Wait().setWaitTime(300)},//wait to openAll before continuing back
-            {new EncoderDrive().setSpeed(0.3).setDistances(-3, -3)},//Move Forward
+            {new EncoderDrive().setDistances(-5, -5).setSpeed(0.3)},
             {new Wait()},
     };
 
     @Override
     public void init() {
         bot = new Robot();
+        auto.setTelemetry(telemetry);
         auto.init(hardwareMap, bot, steps);
     }
 

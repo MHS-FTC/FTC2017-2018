@@ -28,10 +28,10 @@ public class ForkliftTeleop extends OpMode {
 
         robot.forklift.raise(gamepad1.left_stick_y);
         if (gamepad1.a) {
-            robot.forklift.open();
+            robot.forklift.openAll();
         }
         if (gamepad1.b) {
-            robot.forklift.close();
+            robot.forklift.closeAll();
         }
     }
 }

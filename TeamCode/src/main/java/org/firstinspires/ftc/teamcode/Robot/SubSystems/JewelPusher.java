@@ -21,7 +21,7 @@ public class JewelPusher extends SubSystem {
     public static final String ID = "JewelPusher";
     private Options options = new Options(ID);
 
-    private Servo rotate;
+    public Servo rotate;//this is a temp fix TODO Make sure this does not stay public
     private Servo hitter;
     private ColorSensor color;
     private LED led;
