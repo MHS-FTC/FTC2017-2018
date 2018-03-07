@@ -34,6 +34,12 @@ public abstract class Module {
 
     //NOTE: This expects an int between 0 and the number of possible next steps - 1
     //This ideally should not rely on constants however there really is no way around this
+
+    /**
+     * Default behavior is to pass though position in array to the next step
+     *
+     * @return
+     */
     public int stop() {
         return internalPositionInArray;//return default position in array, unless it has been overridden by resetPositionInArray()
     }

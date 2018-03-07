@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.Teleop;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
-
 import org.firstinspires.ftc.teamcode.Robot.Robot;
 import org.firstinspires.ftc.teamcode.Robot.SubSystems.Forklift;
 import org.firstinspires.ftc.teamcode.Utilitys.Direction;
@@ -116,6 +115,6 @@ public class MainTeleop extends OpMode {
         }
 
 
-        robot.jewel.hit(Direction.RIGHT);//store servo
+        robot.jewel.hit(Direction.MIDDLE);//store servo
     }
 }
