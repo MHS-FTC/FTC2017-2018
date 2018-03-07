@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Teleop;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
+
 import org.firstinspires.ftc.teamcode.Robot.Robot;
 import org.firstinspires.ftc.teamcode.Robot.SubSystems.Forklift;
 import org.firstinspires.ftc.teamcode.Utilitys.Direction;
@@ -79,13 +80,13 @@ public class MainTeleop extends OpMode {
 
         //TODO: Replace this with DeltaTracker
         if (gamepad2.left_bumper) {//up
-            relicClawRotation -= 0.007;
+            relicClawRotation -= 0.003;
         }
         if (gamepad2.right_bumper) {//down
-            relicClawRotation += 0.007;
+            relicClawRotation += 0.003;
         }
         //clip the rotation of the claw
-        relicClawRotation = Range.clip(relicClawRotation, 0.02, 1);
+        relicClawRotation = Range.clip(relicClawRotation, 0.9, 1);//previously minimum 0.02
         /*
         if (relicClawRotation > 1) {
             relicClawRotation = 1;
@@ -96,13 +97,22 @@ public class MainTeleop extends OpMode {
         robot.relicGrabber.rotate(relicClawRotation);//Rotates the claw so it begins down and goes from there
 
 
+        boolean forkClawMoved = false;//by default we aren't changing state of forklift
         //controls both sets of claws with first controller
         if (gamepad1.right_bumper) {
             robot.forklift.setForkPosition(Direction.TOP, Forklift.Position.FULL_OPEN);
-        } else if (gamepad1.left_bumper) {
+            forkClawMoved = true;
+        }
+        if (gamepad1.left_bumper) {
             robot.forklift.setForkPosition(Direction.BOTTOM, Forklift.Position.FULL_OPEN);
-        } else if (gamepad1.b) {
+            forkClawMoved = true;
+        }
+        if (gamepad1.b) {
             robot.forklift.openHalfAll();
+            forkClawMoved = true;
+        }
+        if (!forkClawMoved) {//if they aren't trying to stay open, then close all of them
+            robot.forklift.closeAll();
         }
 
 
